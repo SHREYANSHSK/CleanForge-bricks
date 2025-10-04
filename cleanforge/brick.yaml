@@ -1,0 +1,31 @@
+name: cleanforge
+description: Generates a Flutter project with clean architecture, supporting selectable state management (GetX for now), including data, domain, presentation layers, and packages like dio, logger, dartz.
+
+
+# The following defines the brick repository url.
+# Uncomment and update the following line before publishing the brick.
+# repository: https://github.com/my_org/my_repo
+
+# The following defines the version and build number for your brick.
+# A version number is three numbers separated by dots, like 1.2.34
+# followed by an optional build number (separated by a +).
+version: 0.1.0+1
+
+# The following defines the environment for the current brick.
+# It includes the version of mason that the brick requires.
+environment:
+  mason: ^0.1.1
+
+vars:
+  project_name:
+    type: string
+    description: The name of the project
+    default: my_app
+    prompt: What is your project name?
+  state_management:
+    type: enum
+    description: Select state management
+    values:
+      - getx
+    default: getx
+    prompt: Which state management to use?

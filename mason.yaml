@@ -1,0 +1,5 @@
+bricks:
+  cleanforge:
+    path: cleanforge
+  cleanforge_feature:
+    path: cleanforge_feature

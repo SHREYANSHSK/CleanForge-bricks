@@ -1,0 +1,21 @@
+name: cleanforge_feature
+description: Adds a new feature module to a Flutter clean architecture project, with automatic route addition.
+
+version: 0.1.0+1
+
+
+environment:
+  mason: ^0.1.1
+vars:
+  feature_name:
+    type: string
+    description: The name of the feature (e.g., auth)
+    default: new_feature
+    prompt: What is the feature name?
+  state_management:
+    type: enum
+    description: State management used in the project
+    values:
+      - getx
+    default: getx
+    prompt: Which state management is used??
