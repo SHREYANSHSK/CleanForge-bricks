@@ -6,7 +6,7 @@ class HomeDataSource {
 
   HomeDataSource(this._dio);
 
-  Future<Map<String, dynamic>> fetchExample() async {
+  Future<Map<String, dynamic>> fetchHome() async {
     final response = await _dio.get('${Constants.apiBaseUrl}/example');
     return response.data;
   }

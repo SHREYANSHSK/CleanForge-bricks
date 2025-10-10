@@ -1,14 +1,19 @@
 import 'package:get/get.dart';
-import 'package:{{project_name}}/features/home/domain/entities/home_entity.dart';
 import 'package:{{project_name}}/features/home/domain/usecases/home_usecase.dart';
-import 'package:{{project_name}}/common/utils/utils.dart';
+import 'package:{{project_name}}/features/home/presentation/states/home_state.dart';
+import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart'
+import 'package:toastification/toastification.dart';
+import 'package:{{project_name}}/common/widgets/toastMessage.dart';
+
+
+
 
 class HomeController extends GetxController {
-  final HomeUseCase useCase;
+  final HomeState state;
+  final HomeUseCase homeUseCase;
 
-  HomeController(this.useCase);
+  HomeController({required this.homeUseCase,required this.state});
 
-  final home = Rxn<HomeEntity>();
 
   @override
   void onInit() {
@@ -17,10 +22,19 @@ class HomeController extends GetxController {
   }
 
   Future<void> fetchHome() async {
-    final result = await useCase();
+    final result = await homeUseCase();
     result.fold(
-          (failure) => logInfo('Error: $failure'),
-          (data) => home.value = data,
+          (failure) {
+        Log.error(failure,["error while fetching Home Data"]);
+        showToastNotification(
+          title: 'Could not fetch details',
+          message: 'Please try again later',
+          messageType: ToastificationType.error,
+        );
+
+        state.isLoading.toggle();
+      },
+          (data) => state.homeData.value = data,
     );
   }
 }

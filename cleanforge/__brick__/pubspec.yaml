@@ -11,10 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  get: ^4.7.2
-  dio: ^5.9.0
-  logger: ^2.6.1
-  dartz: ^0.10.1
+
 
 dev_dependencies:
   flutter_test:
@@ -23,3 +20,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - .env

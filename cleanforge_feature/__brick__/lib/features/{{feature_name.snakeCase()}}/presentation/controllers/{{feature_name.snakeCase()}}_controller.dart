@@ -1,14 +1,18 @@
 import 'package:get/get.dart';
-import 'package:{{project_name}}/features/{{feature_name.snakeCase()}}/domain/entities/{{feature_name.snakeCase()}}_entity.dart';
 import 'package:{{project_name}}/features/{{feature_name.snakeCase()}}/domain/usecases/{{feature_name.snakeCase()}}_usecase.dart';
-import 'package:{{project_name}}/common/utils/utils.dart';
+import 'package:{{project_name}}/features/{{feature_name.snakeCase()}}/presentation/states/{{feature_name.snakeCase()}}_state.dart';
+import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
+import 'package:toastification/toastification.dart';
+import 'package:{{project_name}}/common/widgets/toastMessage.dart';
+
+
 
 class {{feature_name.pascalCase()}}Controller extends GetxController {
-final {{feature_name.pascalCase()}}UseCase useCase;
+final {{feature_name.pascalCase()}}State state;
+final {{feature_name.pascalCase()}}UseCase {{feature_name.snakeCase()}}UseCase;
 
-{{feature_name.pascalCase()}}Controller(this.useCase);
+{{feature_name.pascalCase()}}Controller({required this.{{feature_name.snakeCase()}}useCase, required this.state});
 
-final {{feature_name.camelCase()}} = Rxn<{{feature_name.pascalCase()}}Entity>();
 
 @override
 void onInit() {
@@ -16,11 +20,23 @@ super.onInit();
 fetch{{feature_name.pascalCase()}}();
 }
 
-Future<void> fetch{{feature_name.pascalCase()}}() async {
-final result = await useCase();
+Future<void> fetch{{feature_name.pascalCase()}}Data() async {
+state.isLoading.toggle();
+final result = await {{feature_name.snakeCase()}}UseCase();
+
 result.fold(
-(failure) => logInfo('Error: $failure'),
-(data) => {{feature_name.camelCase()}}.value = data,
+(failure) {
+Log.error(failure,["error while fetching {{feature_name.pascalCase()}}Data"]);
+showToastNotification(
+title: 'Could not fetch details',
+message: 'Please try again later',
+messageType: ToastificationType.error,
 );
+
+state.isLoading.toggle();
+},
+(data) => state.{{feature_name.camelCase()}}Data.value = data,
+);
+
 }
 }
