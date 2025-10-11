@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:{{project_name}}/features/home/domain/usecases/home_usecase.dart';
 import 'package:{{project_name}}/features/home/presentation/states/home_state.dart';
-import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart'
+import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
 import 'package:toastification/toastification.dart';
 import 'package:{{project_name}}/common/widgets/toastMessage.dart';
 
@@ -28,7 +28,7 @@ class HomeController extends GetxController {
         Log.error(failure,["error while fetching Home Data"]);
         showToastNotification(
           title: 'Could not fetch details',
-          message: 'Please try again later',
+          body: 'Please try again later',
           messageType: ToastificationType.error,
         );
 

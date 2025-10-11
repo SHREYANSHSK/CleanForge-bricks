@@ -2,49 +2,87 @@ import 'dart:io';
 import 'package:mason/mason.dart';
 
 Future<void> run(HookContext context) async {
-  final featureName = context.vars['feature_name'] as String;
+  final featureName = (context.vars['feat'] as String?)?.trim() ?? '';
+  final projectName = (context.vars['project_name'] as String?)?.trim() ?? '';
+  final stateManagement = (context.vars['state_management'] as String?)?.trim() ?? 'getx';
+
+  /// Validate inputs (should be set by pre_gen.dart)
+  if (featureName.isEmpty) {
+    context.logger.err('Error: feat is missing or empty. Please provide a valid feature name using --feat or interactive prompt.');
+    return;
+  }
+  if (projectName.isEmpty) {
+    context.logger.err('Error: project_name is missing or empty. Check .cleanforge/config.json or provide --project_name.');
+    return;
+  }
+  if (stateManagement.isEmpty) {
+    context.logger.err('Error: state_management is missing or empty. Defaulting to "getx".');
+    return;
+  }
+
+  /// Warn if state_management isn't getx
+  if (stateManagement != 'getx') {
+    context.logger.warn('Custom state_management "$stateManagement" detected, but feature templates are GetX-only (as of now). Update templates for support.');
+  }
+
+  context.logger.info('Using project_name: $projectName');
+  context.logger.info('Using state_management: $stateManagement');
+
+  /// Convert feature name
   final snake = featureName.snakeCase;
   final camel = featureName.camelCase;
   final pascal = featureName.pascalCase;
-  final projectName = context.vars['project_name'] as String;
 
-  // Update app_routes.dart
+  /// Update app_routes.dart
   final routesFile = File('lib/routes/app_routes.dart');
   if (await routesFile.exists()) {
     var content = await routesFile.readAsString();
-
-    // Add import if needed (but since it's const, no import needed for the class)
-
-    // Find the class and add the const
     final insertPoint = content.lastIndexOf('}');
     if (insertPoint != -1) {
       final newConst = '  static const $camel = \'/$snake\';\n';
       content = content.substring(0, insertPoint) + newConst + content.substring(insertPoint);
       await routesFile.writeAsString(content);
+      context.logger.info('Updated app_routes.dart with route: /$snake');
+    } else {
+      context.logger.warn('Could not update app_routes.dart (missing closing brace).');
     }
+  } else {
+    context.logger.warn('app_routes.dart not found. Skipping route update.');
   }
 
-  // Update app_pages.dart
+  /// Update app_pages.dart
   final pagesFile = File('lib/routes/app_pages.dart');
   if (await pagesFile.exists()) {
     var content = await pagesFile.readAsString();
-
-    // Add imports
-    final importBinding = 'import \'package:$projectName/features/$snake/presentation/bindings/${snake}_binding.dart\';\n';
-    final importPage = 'import \'package:$projectName/features/$snake/presentation/pages/${snake}_page.dart\';\n';
-    final importRoutes = content.contains('import \'package:$projectName/routes/app_routes.dart\';') ? '' : 'import \'package:$projectName/routes/app_routes.dart\';\n';
+    final importBinding = "import 'package:$projectName/features/$snake/presentation/bindings/${snake}_binding.dart';\n";
+    final importPage = "import 'package:$projectName/features/$snake/presentation/pages/${snake}_page.dart';\n";
+    final importRoutes = content.contains("import 'package:$projectName/routes/app_routes.dart';")
+        ? ''
+        : "import 'package:$projectName/routes/app_routes.dart';\n";
 
     content = importBinding + importPage + importRoutes + content;
 
-    // Find the pages list and add the GetPage
     final listStart = content.indexOf('static final pages = [');
     if (listStart != -1) {
       final listEnd = content.indexOf('];', listStart);
       if (listEnd != -1) {
-        final newPage = '    GetPage(\n      name: AppRoutes.$camel,\n      page: () => const ${pascal}Page(),\n      binding: ${pascal}Binding(),\n    ),\n';
-        content = content.substring(0, listEnd) + ',\n' + newPage + content.substring(listEnd);
+        final newPage = '''    GetPage(
+      name: AppRoutes.$camel,
+      page: () => const ${pascal}Page(),
+      binding: ${pascal}Binding(),
+    ),\n''';
+        content = '${content.substring(0, listEnd)},\n$newPage${content.substring(listEnd)}';
         await pagesFile.writeAsString(content);
+        context.logger.info('Updated app_pages.dart with ${pascal}Page');
+      } else {
+        context.logger.warn('Could not update app_pages.dart (missing pages list end).');
       }
+    } else {
+      context.logger.warn('Could not update app_pages.dart (missing pages list).');
     }
+  } else {
+    context.logger.warn('app_pages.dart not found. Skipping page update.');
   }
+
+  context.logger.info('Feature "$featureName" added successfully. Run `flutter pub get` if needed.');
 }

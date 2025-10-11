@@ -1,4 +1,4 @@
 class AppRoutes {
   static const home = '/home';
-// Add more routes here
+  static const pageNotFound = '/pageNotFound';
 }

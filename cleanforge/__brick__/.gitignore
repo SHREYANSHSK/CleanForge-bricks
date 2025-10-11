@@ -46,3 +46,6 @@ app.*.map.json
 
 # env file
 *.env
+
+# cleanforge related
+.cleanforge/
