@@ -1,0 +1,55 @@
+import 'package:{{project_name}}/common/resources/storage_resources/local_client.dart';
+import 'package:{{project_name}}/common/resources/app_resources/app_map_keys.dart';
+import 'package:{{project_name}}/common/resources/storage_resources/localKeys.dart';
+import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
+import 'package:{{project_name}}/common/core/utils/errors/exceptions.dart';
+
+
+
+abstract class HomeLocalDataSource {
+  Future<void> setAccessToken(String accessToken);
+  Future<void> setUserId(String userId);
+  Future<void> clearAll();
+}
+
+class HomeLocalDataSourceImpl implements HomeLocalDataSource {
+  @override
+  Future<void> setAccessToken(String accessToken) async {
+    try {
+      await LocalClient.saveString(
+        key: LocalKeys.accessToken,
+        value: accessToken,
+      );
+      Log.info("Access token saved successfully");
+    } catch (e, stackTrace) {
+        Log.error("Error saving access token", e, stackTrace);
+        throw const StorageException(message: "Failed to save access token");
+    }
+  }
+
+  @override
+  Future<void> setUserId(String userId) async {
+    try {
+      await LocalClient.saveString(
+        key: LocalKeys.userId,
+        value: userId,
+      );
+      AppMapKeys.userId = userId;
+      Log.info("User ID saved successfully");
+    } catch (e, stackTrace) {
+        Log.error("Error saving user ID", e, stackTrace);
+        throw const StorageException(message: "Failed to save user ID");
+    }
+  }
+
+  @override
+  Future<void> clearAll() async {
+    try {
+      await LocalClient.clearAll();
+      Log.info("Local data cleared successfully");
+    } catch (e, stackTrace) {
+        Log.error("Error clearing local data", e, stackTrace);
+        throw const StorageException(message: "Failed to clear local data");
+    }
+  }
+}

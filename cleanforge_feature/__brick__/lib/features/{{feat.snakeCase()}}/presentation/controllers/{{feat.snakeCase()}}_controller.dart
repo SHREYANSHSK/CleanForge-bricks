@@ -9,9 +9,9 @@ import 'package:{{project_name}}/common/widgets/toastMessage.dart';
 
 class {{feat.pascalCase()}}Controller extends GetxController {
   final {{feat.pascalCase()}}State state;
-  final {{feat.pascalCase()}}UseCase {{feat.snakeCase()}}UseCase;
+  final Get{{feat.pascalCase()}}UseCase get{{feat.pascalCase()}}UseCase;
 
-  {{feat.pascalCase()}}Controller({required this.{{feat.snakeCase()}}UseCase, required this.state});
+  {{feat.pascalCase()}}Controller({required this.get{{feat.pascalCase()}}UseCase, required this.state});
 
 
   @override
@@ -22,7 +22,11 @@ class {{feat.pascalCase()}}Controller extends GetxController {
 
   Future<void> fetch{{feat.pascalCase()}}Data() async {
       state.isLoading.toggle();
-      final result = await {{feat.snakeCase()}}UseCase();
+      final result = await get{{feat.pascalCase()}}UseCase(
+        Get{{feat.pascalCase()}}DataUseCaseParams(
+        id:"1"
+        )
+      );
 
       result.fold(
         (failure) {
