@@ -11,7 +11,7 @@ class {{feat.pascalCase()}}Page extends GetView<{{feat.pascalCase()}}Controller>
     return Scaffold(
       appBar: AppBar(title: const Text('{{feat.pascalCase()}} Page')),
       body: Obx(() {
-        if (controller.state.{{feat.camelCase()}}Data.value == null) {
+        if (controller.state.isLoading.value) {
         return const Center(child: CircularProgressIndicator());
         }
         return const {{feat.pascalCase()}}Widget();

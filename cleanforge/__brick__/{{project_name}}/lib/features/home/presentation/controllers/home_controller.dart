@@ -4,6 +4,8 @@ import 'package:{{project_name}}/features/home/presentation/states/home_state.da
 import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
 import 'package:toastification/toastification.dart';
 import 'package:{{project_name}}/common/widgets/toastMessage.dart';
+import 'package:{{project_name}}/features/home/domain/entities/home_request_entity.dart';
+
 
 class HomeController extends GetxController {
   final HomeState state;
@@ -18,19 +20,34 @@ class HomeController extends GetxController {
   }
 
   Future<void> fetchHomeData() async {
-    final result = await getHomeUseCase(GetHomeDataUseCaseParams(id: "1"));
-    result.fold(
-      (failure) {
-        Log.error(failure, ["error while fetching Home Data"]);
-        showToastNotification(
-          title: 'Could not fetch details',
-          body: 'Please try again later',
-          messageType: ToastificationType.error,
-        );
+    state.isLoading.toggle();
 
-        state.isLoading.toggle();
-      },
-      (data) => state.homeData.value = data,
-    );
+    try {
+      final request = HomeRequestEntity(
+        id: "1",
+      );
+      final result = await getHomeUseCase(GetHomeDataUseCaseParams(request: request));
+      result.fold(
+        (failure) {
+          Log.error(failure, ["error while fetching Home Data"]);
+          showToastNotification(
+            title: 'Could not fetch details',
+            body: 'Please try again later',
+            messageType: ToastificationType.error,
+          );
+      
+          state.isLoading.toggle();
+        },
+        (data) => state.homeData.value = data,
+      );
+    } catch (e, stackTrace) {
+      Log.error("Unexpected error during fetching of home data", e, stackTrace);
+      showToastNotification(
+        title: 'Failed Fetching HomeData',
+        body: 'An unexpected error occurred. Please try again.',
+        messageType: ToastificationType.error,
+      );
+      state.isLoading.value = false;
+    }
   }
 }

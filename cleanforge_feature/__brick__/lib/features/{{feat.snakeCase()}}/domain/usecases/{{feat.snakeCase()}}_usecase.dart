@@ -2,6 +2,8 @@ import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/repositori
 import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_entity.dart';
 import 'package:{{project_name}}/common/core/utils/use_cases/user_cases.dart';
 import 'package:{{project_name}}/common/core/utils/type_def/type_def.dart';
+import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_request_entity.dart';
+
 
 
 
@@ -13,14 +15,14 @@ class Get{{feat.pascalCase()}}UseCase  implements UseCaseWithParams<{{feat.pasca
   @override
   ResultFuture<{{feat.pascalCase()}}Entity> call(Get{{feat.pascalCase()}}DataUseCaseParams params) async {
     return await repository.get{{feat.pascalCase()}}Data(
-    id: params.id
+    request: params.request
     );
   }
 }
 
 class Get{{feat.pascalCase()}}DataUseCaseParams {
-  final String id;
+  final {{feat.pascalCase()}}RequestEntity request;
   Get{{feat.pascalCase()}}DataUseCaseParams({
-    required this.id
+    required this.request
   });
 }

@@ -7,6 +7,8 @@ import 'package:{{project_name}}/features/home/data/models/home_model.dart';
 import 'package:{{project_name}}/features/home/domain/entities/home_entity.dart';
 import 'package:{{project_name}}/features/home/domain/repositories/home_repository.dart';
 import 'package:{{project_name}}/common/core/utils/errors/exceptions.dart';
+import 'package:{{project_name}}/features/home/domain/entities/home_request_entity.dart';
+
 
 
 class HomeRepositoryImpl extends HomeRepository {
@@ -16,9 +18,9 @@ class HomeRepositoryImpl extends HomeRepository {
   HomeRepositoryImpl({required this.remoteDataSource,required this.localDataSource});
 
   @override
-  ResultFuture<HomeEntity> getHomeData({required String id}) async {
+  ResultFuture<HomeEntity> getHomeData({required HomeRequestEntity request}) async {
     try {
-      final HomeModel model = await remoteDataSource.fetchHomeData(id:id);
+      final HomeModel model = await remoteDataSource.fetchHomeData(request);
 
       // Optionally cache something locally if needed
       localDataSource.setAccessToken(model.id);

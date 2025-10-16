@@ -6,7 +6,6 @@ import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/repositori
 import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/usecases/{{feat.snakeCase()}}_usecase.dart';
 import 'package:{{project_name}}/features/{{feat.snakeCase()}}/presentation/controllers/{{feat.snakeCase()}}_controller.dart';
 import 'package:{{project_name}}/features/{{feat.snakeCase()}}/presentation/states/{{feat.snakeCase()}}_state.dart';
-import 'package:{{project_name}}/common/resources/network_resources/rest_client/rest_client.dart';
 
 
 

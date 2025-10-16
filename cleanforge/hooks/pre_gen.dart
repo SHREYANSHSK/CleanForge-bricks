@@ -4,7 +4,8 @@ import 'package:mason/mason.dart';
 
 Future<void> run(HookContext context) async {
   final projectName = (context.vars['project_name'] as String?)?.trim() ?? '';
-  final stateManagement = (context.vars['state_management'] as String?)?.trim() ?? 'getx';
+  final stateManagement =
+      (context.vars['state_management'] as String?)?.trim() ?? 'getx';
 
   /// Validate inputs
   if (projectName.isEmpty) {
@@ -33,7 +34,7 @@ Example: my_flutter_app
   context.logger.info('📦 Project Name: $projectName');
   context.logger.info('🧠 State Management: $stateManagement');
 
-  // 🔍 Step 1: Check if the project folder already exists
+  /// Step 1: Check if the project folder already exists
 
   final projectDir = Directory(projectName);
 
@@ -54,17 +55,20 @@ Example: my_flutter_app
 
       final exitCode = await result.exitCode;
       if (exitCode != 0) {
-        context.logger.err('❌ Flutter project creation failed with exit code $exitCode.');
+        context.logger
+            .err('❌ Flutter project creation failed with exit code $exitCode.');
         return;
       }
 
-      context.logger.success('✅ Flutter project "$projectName" created successfully.');
+      context.logger
+          .success('✅ Flutter project "$projectName" created successfully.');
     } catch (e) {
       context.logger.err('❌ Error creating Flutter project: $e');
       return;
     }
   } else {
-    context.logger.warn('⚠️ Folder "$projectName" already exists. Skipping flutter create.');
+    context.logger.warn(
+        '⚠️ Folder "$projectName" already exists. Skipping flutter create.');
   }
 
   ///  Step 3: Create .cleanforge directory and config.json
@@ -85,7 +89,6 @@ Example: my_flutter_app
     return;
   }
 
-  context.vars['output_dir'] = projectName;
-
-  context.logger.success('🎯 Pre-generation setup complete! You can now generate features inside $projectName.');
+  context.logger.success(
+      '🎯 Pre-generation setup complete! You can now generate features inside $projectName.');
 }

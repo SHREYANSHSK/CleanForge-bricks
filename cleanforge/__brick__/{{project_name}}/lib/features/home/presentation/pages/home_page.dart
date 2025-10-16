@@ -12,7 +12,7 @@ class HomePage extends GetView<HomeController> {
     return Scaffold(
       appBar: AppBar(title: const Text('Home Page')),
       body: Obx(() {
-        if (controller.state.homeData.value == null) {
+        if (controller.state.isLoading.value) {
           return const Center(child: CircularProgressIndicator());
         }
         return HomeWidget();

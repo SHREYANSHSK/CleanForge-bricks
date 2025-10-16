@@ -10,7 +10,7 @@ Future<void> run(HookContext context) async {
   /// Log current directory
   final projectDir = Directory(projectName);
   context.logger.info('Running in directory: ${projectDir.path}');
-  context.logger.info(context.vars['output_dir']);
+
 
   /// Check if flutter command is available (for debugging)
   try {
@@ -52,30 +52,25 @@ Future<void> run(HookContext context) async {
     'get_storage',
   ];
 
-  /// Track failed packages
-  final failedPackages = <String>[];
 
   /// Add each package
-  for (final package in packages) {
     try {
-      context.logger.info('Adding package: $package');
+      context.logger.info('Adding required packages');
       final result = await Process.run(
         'flutter',
-        ['pub', 'add', package],
+        ['pub', 'add', packages.map((pkg) => pkg).join(" ")],
         runInShell: true,
         workingDirectory: projectDir.path,
       );
       if (result.exitCode == 0) {
-        context.logger.info('Successfully added $package');
+        context.logger.info('Successfully added packages');
       } else {
-        context.logger.err('Failed to add $package: ${result.stderr}');
-        failedPackages.add(package);
+        context.logger.err('Failed to add all/some packages: ${result.stderr}');
       }
     } catch (e) {
-      context.logger.err('Error adding $package: $e');
-      failedPackages.add(package);
+      context.logger.err('Error adding all/some packages: $e');
     }
-  }
+
 
   /// --- FORMAT ALL DART FILES ---
   try {
@@ -98,14 +93,13 @@ Future<void> run(HookContext context) async {
   }
 
   /// If any packages failed, provide a single set of commands
-  if (failedPackages.isNotEmpty) {
-    context.logger.err(
-        'Some packages failed to install. Run the following commands manually in $projectDir:');
-    final commands =
-        'flutter pub add ${failedPackages.map((pkg) => pkg).join(" ")}';
-    context.logger.info('```\n$commands\n```');
-  }
-  context.logger.info('Templates generated in: ${Directory.current.path}');
+  // if (failedPackages.isNotEmpty) {
+  //   context.logger.err(
+  //       'Some packages failed to install. Run the following commands manually in $projectDir:');
+  //   final commands =
+  //       'flutter pub add ${failedPackages.map((pkg) => pkg).join(" ")}';
+  //   context.logger.info('```\n$commands\n```');
+  // }
 
   progress.complete('Dependencies addition process completed');
 }

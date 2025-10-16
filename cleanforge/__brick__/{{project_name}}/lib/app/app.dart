@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:{{project_name}}/common/core/theme/theme.dart';
 import 'package:{{project_name}}/app/app_binding.dart';
 import 'package:{{project_name}}/routes/app_pages.dart';
 import 'package:{{project_name}}/common/core/utils/navigator_observer/app_navigator_observer.dart';
@@ -35,7 +36,8 @@ class App extends StatelessWidget {
             ),
             navigatorObservers: [AppNavigatorObserver()],
             useInheritedMediaQuery: true,
-            theme: ThemeData(primarySwatch: Colors.blue),
+            themeMode: ThemeMode.system,
+            theme: AppTheme.lightTheme,
           );
         },
       ),

@@ -4,14 +4,13 @@ import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
 import 'package:{{project_name}}/common/resources/network_resources/api_endpoints.dart';
 import 'package:{{project_name}}/common/core/utils/errors/exceptions.dart';
 import 'package:{{project_name}}/features/home/data/models/home_model.dart';
-
+import 'package:{{project_name}}/features/home/domain/entities/home_request_entity.dart';
+import 'package:{{project_name}}/features/home/data/models/home_request_model.dart';
 
 
 abstract class HomeRemoteDataSource {
 
-  Future<HomeModel> fetchHomeData({
-    required String id
-  });
+  Future<HomeModel> fetchHomeData(HomeRequestEntity request);
 
 }
 
@@ -22,9 +21,10 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource{
   HomeRemoteDataSourceImpl(this._restClient);
 
   @override
-  Future<HomeModel> fetchHomeData({required String id}) async {
+  Future<HomeModel> fetchHomeData(HomeRequestEntity request) async {
     try {
-      final response = await _restClient.get(APIEndpoints.homeDataEndPoint);
+      final requestModel = HomeRequestModel.fromEntity(request);
+      final response = await _restClient.get(APIEndpoints.homeDataByIdEndPoint(requestModel.id));
       return HomeModel.fromJson(response);
     } on DioException catch (dioError, stackTrace) {
       Log.warning(

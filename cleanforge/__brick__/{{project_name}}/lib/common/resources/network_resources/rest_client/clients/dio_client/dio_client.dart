@@ -3,11 +3,11 @@ import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
 import 'package:{{project_name}}/common/resources/network_resources/network_info/network_info.dart';
 import 'package:{{project_name}}/common/resources/network_resources/rest_client/clients/dio_client/dio_interceptor.dart';
 import 'package:{{project_name}}/common/resources/network_resources/rest_client/rest_client.dart';
-import 'package:{{project_name}}/common/resources/app_resources/app_map_keys.dart';
-import 'package:{{project_name}}/common/resources/storage_resources/localKeys.dart';
 import 'package:{{project_name}}/common/widgets/toastMessage.dart';
 import 'package:toastification/toastification.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:{{project_name}}/common/resources/storage_resources/localKeys.dart';
+import 'package:{{project_name}}/common/resources/storage_resources/local_client.dart';
 
 class DioClient extends RestClient {
   late final Dio _dio;
@@ -20,7 +20,9 @@ class DioClient extends RestClient {
           connectTimeout: const Duration(seconds: 10),
           receiveTimeout: const Duration(seconds: 10),
           contentType: 'application/json',
-          headers: {"Authorization": "Bearer ${AppMapKeys.accessToken}"},
+          headers: {"Authorization": "Bearer ${LocalClient.getString(
+            key: LocalKeys.accessToken,
+          )}"},
         ),
       ) {
     // Attach our safe interceptor

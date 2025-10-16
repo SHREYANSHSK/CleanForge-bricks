@@ -1,5 +1,5 @@
 abstract class APIEndpoints {
-  static String sampleByIdEndPoint(id) =>
+  static String homeDataByIdEndPoint(id) =>
       "/api/sample/$id";
 
   static String homeDataEndPoint = "/api/sample/home";

@@ -1,5 +1,4 @@
 import 'package:{{project_name}}/common/resources/storage_resources/local_client.dart';
-import 'package:{{project_name}}/common/resources/app_resources/app_map_keys.dart';
 import 'package:{{project_name}}/common/resources/storage_resources/localKeys.dart';
 import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
 import 'package:{{project_name}}/common/core/utils/errors/exceptions.dart';
@@ -34,7 +33,6 @@ class HomeLocalDataSourceImpl implements HomeLocalDataSource {
         key: LocalKeys.userId,
         value: userId,
       );
-      AppMapKeys.userId = userId;
       Log.info("User ID saved successfully");
     } catch (e, stackTrace) {
         Log.error("Error saving user ID", e, stackTrace);

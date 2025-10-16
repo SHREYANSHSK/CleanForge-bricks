@@ -4,15 +4,16 @@ import 'package:{{project_name}}/common/core/utils/errors/exceptions.dart';
 import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
 import 'package:{{project_name}}/common/resources/network_resources/api_endpoints.dart';
 import 'package:{{project_name}}/features/{{feat.snakeCase()}}/data/models/{{feat.snakeCase()}}_model.dart';
+import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_request_entity.dart';
+import 'package:{{project_name}}/features/{{feat.snakeCase()}}/data/models/{{feat.snakeCase()}}_request_model.dart';
+
 
 
 
 
 abstract class {{feat.pascalCase()}}RemoteDataSource {
 
-  Future<{{feat.pascalCase()}}Model> fetch{{feat.pascalCase()}}Data({
-    required String id
-  });
+  Future<{{feat.pascalCase()}}Model> fetch{{feat.pascalCase()}}Data({{feat.pascalCase()}}RequestEntity request);
 
 }
 
@@ -22,9 +23,10 @@ class {{feat.pascalCase()}}RemoteDataSourceImpl extends {{feat.pascalCase()}}Rem
   {{feat.pascalCase()}}RemoteDataSourceImpl(this._restClient);
 
   @override
-  Future<{{feat.pascalCase()}}Model> fetch{{feat.pascalCase()}}Data({required String id}) async {
+  Future<{{feat.pascalCase()}}Model> fetch{{feat.pascalCase()}}Data({{feat.pascalCase()}}RequestEntity request) async {
     try {
-      final response = await _restClient.get(APIEndpoints.{{feat.snakeCase()}}DataEndPoint);
+      final requestModel = {{feat.pascalCase()}}RequestModel.fromEntity(request);
+      final response = await _restClient.get(APIEndpoints.{{feat.snakeCase()}}DataEndPointById(requestModel.id));
       return {{feat.pascalCase()}}Model.fromJson(response);
     } on DioException catch (dioError, stackTrace) {
       Log.warning(

@@ -106,7 +106,7 @@ Future<void> run(HookContext context) async {
     final insertPoint = apiContent.lastIndexOf('}');
     if (insertPoint != -1) {
       final newEndpoint =
-          '  static String ${snake}DataEndPoint = "/api/sample/$snake";\n';
+          '  static String ${snake}DataEndPointById(id) => "/api/sample/$snake/\$id";\n';
       apiContent = apiContent.substring(0, insertPoint) +
           newEndpoint +
           apiContent.substring(insertPoint);

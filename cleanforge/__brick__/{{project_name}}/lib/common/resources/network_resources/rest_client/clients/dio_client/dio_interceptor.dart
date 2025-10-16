@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'dio_client.dart';
-import 'package:{{project_name}}/common/resources/app_resources/app_map_keys.dart';
+import 'package:{{project_name}}/common/resources/storage_resources/localKeys.dart';
+import 'package:{{project_name}}/common/resources/storage_resources/local_client.dart';
 
 class DioInterceptor extends Interceptor {
   final DioClient client;
@@ -13,10 +14,11 @@ class DioInterceptor extends Interceptor {
 
     options.headers.addAll({
       "content-type": "application/json",
-      if (AppMapKeys.accessToken != null && AppMapKeys.accessToken!.trim().isNotEmpty)
-        "Authorization": "Bearer ${AppMapKeys.accessToken}",
+        "Authorization": "Bearer ${LocalClient.getString(
+        key: LocalKeys.accessToken,
+      )}",
     });
-
+    client.logRequest(options);
     super.onRequest(options, handler);
   }
 

@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:{{project_name}}/common/core/utils/errors/exceptions.dart';
 
 typedef ResultFuture<T> = Future<Either<Exception, T>>;
 

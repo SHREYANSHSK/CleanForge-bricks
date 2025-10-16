@@ -1,7 +1,7 @@
 
 /// This keys are used to access the data from local storage
 class LocalKeys {
-  static var fcmToken = '';
-  static var accessToken = '';
-  static var userId = '';
+  static const String fcmToken = 'fcmToken';
+  static const String accessToken = 'accessToken';
+  static const String userId = 'userId';
 }

@@ -7,6 +7,8 @@ import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/repositori
 import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
 import 'package:{{project_name}}/common/core/utils/type_def/type_def.dart';
 import 'package:{{project_name}}/common/core/utils/errors/exceptions.dart';
+import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_request_entity.dart';
+
 
 
 class {{feat.pascalCase()}}RepositoryImpl extends {{feat.pascalCase()}}Repository {
@@ -16,9 +18,9 @@ class {{feat.pascalCase()}}RepositoryImpl extends {{feat.pascalCase()}}Repositor
   {{feat.pascalCase()}}RepositoryImpl({required this.remoteDataSource,required this.localDataSource});
 
   @override
-  ResultFuture<{{feat.pascalCase()}}Entity> get{{feat.pascalCase()}}Data({required String id}) async {
+  ResultFuture<{{feat.pascalCase()}}Entity> get{{feat.pascalCase()}}Data({required {{feat.pascalCase()}}RequestEntity request}) async {
     try {
-      final {{feat.pascalCase()}}Model model = await remoteDataSource.fetch{{feat.pascalCase()}}Data(id:id);
+      final {{feat.pascalCase()}}Model model = await remoteDataSource.fetch{{feat.pascalCase()}}Data(request);
 
       // Optionally cache something locally if needed
       localDataSource.setAccessToken(model.id);

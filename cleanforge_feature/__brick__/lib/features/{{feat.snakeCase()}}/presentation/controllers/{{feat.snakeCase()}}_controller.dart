@@ -4,6 +4,7 @@ import 'package:{{project_name}}/features/{{feat.snakeCase()}}/presentation/stat
 import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
 import 'package:toastification/toastification.dart';
 import 'package:{{project_name}}/common/widgets/toastMessage.dart';
+import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_request_entity.dart';
 
 
 
@@ -21,26 +22,41 @@ class {{feat.pascalCase()}}Controller extends GetxController {
   }
 
   Future<void> fetch{{feat.pascalCase()}}Data() async {
-      state.isLoading.toggle();
-      final result = await get{{feat.pascalCase()}}UseCase(
-        Get{{feat.pascalCase()}}DataUseCaseParams(
-        id:"1"
-        )
-      );
+      try {
+        state.isLoading.toggle();
 
-      result.fold(
-        (failure) {
-          Log.error(failure,["error while fetching {{feat.pascalCase()}}Data"]);
-          showToastNotification(
-            title: 'Could not fetch details',
-            body: 'Please try again later',
-            messageType: ToastificationType.error,
-          );
+        final request = {{feat.pascalCase()}}RequestEntity(
+        id: "1",
+        );
 
-          state.isLoading.toggle();
-        },
-        (data) => state.{{feat.camelCase()}}Data.value = data,
-      );
+        final result = await get{{feat.pascalCase()}}UseCase(
+          Get{{feat.pascalCase()}}DataUseCaseParams(
+          request:request
+          )
+        );
+
+        result.fold(
+          (failure) {
+            Log.error(failure,["error while fetching {{feat.pascalCase()}}Data"]);
+            showToastNotification(
+              title: 'Could not fetch details',
+              body: 'Please try again later',
+              messageType: ToastificationType.error,
+            );
+
+            state.isLoading.toggle();
+          },
+          (data) => state.{{feat.camelCase()}}Data.value = data,
+        );
+      } catch (e, stackTrace) {
+        Log.error("Unexpected error during fetching of {{feat.snakeCase()}} data", e, stackTrace);
+        showToastNotification(
+          title: 'Failed Fetching {{feat.pascalCase()}}Data',
+          body: 'An unexpected error occurred. Please try again.',
+          messageType: ToastificationType.error,
+        );
+        state.isLoading.value = false;
+        }
     }
 }
 

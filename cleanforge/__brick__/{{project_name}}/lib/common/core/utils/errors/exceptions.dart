@@ -1,4 +1,3 @@
-import 'package:{{project_name}}/common/resources/app_resources/app_map_keys.dart';
 import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
 import 'package:{{project_name}}/common/resources/storage_resources/local_client.dart';
 
@@ -14,7 +13,6 @@ class APIException implements Exception {
     Log.verbose("APIException triggered: $message ($statusCode)");
     if (message.toLowerCase().contains("invalid token") || statusCode == 401) {
       await LocalClient.clearAll();
-      AppMapKeys.accessToken = "";
       Log.info("Access token cleared due to invalid/expired token.");
     }
   }
