@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:get_storage/get_storage.dart';
-import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
+import 'package:{{package_name}}/common/core/utils/logger/app_logger.dart';
 
 class LocalClient {
   static final GetStorage _box = GetStorage();

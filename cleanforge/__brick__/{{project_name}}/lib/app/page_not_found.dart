@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:{{project_name}}/common/resources/app_resources/app_strings.dart';
-import 'package:{{project_name}}/common/resources/app_resources/app_text_styles.dart';
+import 'package:{{package_name}}/common/resources/app_resources/app_strings.dart';
+import 'package:{{package_name}}/common/resources/app_resources/app_text_styles.dart';
 
 class PageNotFound extends StatelessWidget {
   const PageNotFound({super.key});

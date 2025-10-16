@@ -1,4 +1,4 @@
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_entity.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_entity.dart';
 
 
 /// This is an example model class extending example model entity

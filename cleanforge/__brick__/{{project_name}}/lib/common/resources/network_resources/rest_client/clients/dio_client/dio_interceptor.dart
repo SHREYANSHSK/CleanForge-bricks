@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'dio_client.dart';
-import 'package:{{project_name}}/common/resources/storage_resources/localKeys.dart';
-import 'package:{{project_name}}/common/resources/storage_resources/local_client.dart';
+import 'package:{{package_name}}/common/resources/storage_resources/local_Keys.dart';
+import 'package:{{package_name}}/common/resources/storage_resources/local_client.dart';
 
 class DioInterceptor extends Interceptor {
   final DioClient client;

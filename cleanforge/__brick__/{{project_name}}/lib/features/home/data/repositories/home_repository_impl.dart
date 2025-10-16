@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
-import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
-import 'package:{{project_name}}/common/core/utils/type_def/type_def.dart';
-import 'package:{{project_name}}/features/home/data/datasources/remote/home_remote_datasource.dart';
-import 'package:{{project_name}}/features/home/data/datasources/local/home_local_datasource.dart';
-import 'package:{{project_name}}/features/home/data/models/home_model.dart';
-import 'package:{{project_name}}/features/home/domain/entities/home_entity.dart';
-import 'package:{{project_name}}/features/home/domain/repositories/home_repository.dart';
-import 'package:{{project_name}}/common/core/utils/errors/exceptions.dart';
-import 'package:{{project_name}}/features/home/domain/entities/home_request_entity.dart';
+import 'package:{{package_name}}/common/core/utils/logger/app_logger.dart';
+import 'package:{{package_name}}/common/core/utils/type_def/type_def.dart';
+import 'package:{{package_name}}/features/home/data/datasources/remote/home_remote_datasource.dart';
+import 'package:{{package_name}}/features/home/data/datasources/local/home_local_datasource.dart';
+import 'package:{{package_name}}/features/home/data/models/home_model.dart';
+import 'package:{{package_name}}/features/home/domain/entities/home_entity.dart';
+import 'package:{{package_name}}/features/home/domain/repositories/home_repository.dart';
+import 'package:{{package_name}}/common/core/utils/errors/exceptions.dart';
+import 'package:{{package_name}}/features/home/domain/entities/home_request_entity.dart';
 
 
 

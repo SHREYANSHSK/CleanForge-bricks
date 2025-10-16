@@ -1,8 +1,8 @@
-import 'package:{{project_name}}/features/home/domain/repositories/home_repository.dart';
-import 'package:{{project_name}}/features/home/domain/entities/home_entity.dart';
-import 'package:{{project_name}}/common/core/utils/use_cases/user_cases.dart';
-import 'package:{{project_name}}/common/core/utils/type_def/type_def.dart';
-import 'package:{{project_name}}/features/home/domain/entities/home_request_entity.dart';
+import 'package:{{package_name}}/features/home/domain/repositories/home_repository.dart';
+import 'package:{{package_name}}/features/home/domain/entities/home_entity.dart';
+import 'package:{{package_name}}/common/core/utils/use_cases/user_cases.dart';
+import 'package:{{package_name}}/common/core/utils/type_def/type_def.dart';
+import 'package:{{package_name}}/features/home/domain/entities/home_request_entity.dart';
 
 
 ///NOTE: Class can be implemented with UseCaseWithoutParams as well if no parameters needs to be pass

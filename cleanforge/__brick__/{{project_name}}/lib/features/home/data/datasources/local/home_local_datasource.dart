@@ -1,7 +1,7 @@
-import 'package:{{project_name}}/common/resources/storage_resources/local_client.dart';
-import 'package:{{project_name}}/common/resources/storage_resources/localKeys.dart';
-import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
-import 'package:{{project_name}}/common/core/utils/errors/exceptions.dart';
+import 'package:{{package_name}}/common/resources/storage_resources/local_client.dart';
+import 'package:{{package_name}}/common/resources/storage_resources/local_Keys.dart';
+import 'package:{{package_name}}/common/core/utils/logger/app_logger.dart';
+import 'package:{{package_name}}/common/core/utils/errors/exceptions.dart';
 
 
 

@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/data/datasources/local/{{feat.snakeCase()}}_local_datasource.dart';
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/data/datasources/remote/{{feat.snakeCase()}}_remote_datasource.dart';
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/data/repositories/{{feat.snakeCase()}}_repository_impl.dart';
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/repositories/{{feat.snakeCase()}}_repository.dart';
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/usecases/{{feat.snakeCase()}}_usecase.dart';
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/presentation/controllers/{{feat.snakeCase()}}_controller.dart';
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/presentation/states/{{feat.snakeCase()}}_state.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/data/datasources/local/{{feat.snakeCase()}}_local_datasource.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/data/datasources/remote/{{feat.snakeCase()}}_remote_datasource.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/data/repositories/{{feat.snakeCase()}}_repository_impl.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/domain/repositories/{{feat.snakeCase()}}_repository.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/domain/usecases/{{feat.snakeCase()}}_usecase.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/presentation/controllers/{{feat.snakeCase()}}_controller.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/presentation/states/{{feat.snakeCase()}}_state.dart';
 
 
 

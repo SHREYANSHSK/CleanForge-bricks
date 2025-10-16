@@ -1,4 +1,4 @@
-import 'package:{{project_name}}/features/home/domain/entities/home_request_entity.dart';
+import 'package:{{package_name}}/features/home/domain/entities/home_request_entity.dart';
 
 class HomeRequestModel extends HomeRequestEntity {
   HomeRequestModel({

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:{{project_name}}/common/resources/app_resources/app_colors.dart';
+import 'package:{{package_name}}/common/resources/app_resources/app_colors.dart';
 
 class RListTileTheme {
   RListTileTheme._();

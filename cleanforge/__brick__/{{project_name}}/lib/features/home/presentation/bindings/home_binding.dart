@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
-import 'package:{{project_name}}/features/home/data/datasources/local/home_local_datasource.dart';
-import 'package:{{project_name}}/features/home/data/datasources/remote/home_remote_datasource.dart';
-import 'package:{{project_name}}/features/home/data/repositories/home_repository_impl.dart';
-import 'package:{{project_name}}/features/home/domain/repositories/home_repository.dart';
-import 'package:{{project_name}}/features/home/domain/usecases/home_usecase.dart';
-import 'package:{{project_name}}/features/home/presentation/controllers/home_controller.dart';
-import 'package:{{project_name}}/features/home/presentation/states/home_state.dart';
+import 'package:{{package_name}}/features/home/data/datasources/local/home_local_datasource.dart';
+import 'package:{{package_name}}/features/home/data/datasources/remote/home_remote_datasource.dart';
+import 'package:{{package_name}}/features/home/data/repositories/home_repository_impl.dart';
+import 'package:{{package_name}}/features/home/domain/repositories/home_repository.dart';
+import 'package:{{package_name}}/features/home/domain/usecases/home_usecase.dart';
+import 'package:{{package_name}}/features/home/presentation/controllers/home_controller.dart';
+import 'package:{{package_name}}/features/home/presentation/states/home_state.dart';
 
 
 class HomeBinding extends Bindings {

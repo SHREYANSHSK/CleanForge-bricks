@@ -141,6 +141,25 @@ Future<void> run(HookContext context) async {
     context.logger.warn('⚠️ dart format failed: $e');
   }
 
+  /// --- Apply DART FIX ---
+  try {
+    context.logger.info('Running "dart fix" to fix all files...');
+    final result = await Process.run(
+        'dart',
+        ['fix', '--apply'],
+        runInShell: true,
+    );
+
+    if (result.exitCode == 0) {
+      context.logger.success('✅ Code fixed successfully.');
+    } else {
+      context.logger.warn(
+          '⚠️ dart fix exited with code ${result.exitCode}: ${result.stderr}');
+    }
+  } catch (e) {
+    context.logger.warn('⚠️ dart fix failed: $e');
+  }
+
   context.logger.success('🎉 Feature "$featureName" added successfully!');
   context.logger.info('Run `flutter pub get` if needed.');
 }

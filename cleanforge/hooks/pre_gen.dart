@@ -3,19 +3,39 @@ import 'dart:io';
 import 'package:mason/mason.dart';
 
 Future<void> run(HookContext context) async {
-  final projectName = (context.vars['project_name'] as String?)?.trim() ?? '';
-  final stateManagement =
-      (context.vars['state_management'] as String?)?.trim() ?? 'getx';
+  final mode = (context.vars['mode'] as String?)?.trim() ?? 'new_project';
+  var projectName = (context.vars['project_name'] as String?)?.trim() ?? '';
+  final stateManagement = (context.vars['state_management'] as String?)?.trim() ?? 'getx';
 
-  /// Validate inputs
+  context.logger.info('🔧 Mode: ${mode == "new_project" ? "Creating New Project" : "Using Existing Project"}');
+  context.logger.info('🧠 State Management: $stateManagement');
+
+  if (mode == 'new_project') {
+    await _handleNewProject(context, projectName, stateManagement);
+    // For new projects, package_name is same as project_name
+    context.vars['package_name'] = projectName;
+  } else {
+    // For existing projects, detect package name from pubspec.yaml
+    final packageName = await _handleExistingProject(context, projectName, stateManagement);
+    context.vars['project_name'] = '.'; // For file generation path
+    context.vars['package_name'] = packageName; // For imports
+  }
+}
+
+/// Handle creation of a new Flutter project
+Future<void> _handleNewProject(
+    HookContext context,
+    String projectName,
+    String stateManagement,
+    ) async {
   if (projectName.isEmpty) {
     context.logger.err(
-      '❌ Error: project_name is missing or empty. Please provide a valid project name using --project_name or interactive prompt.',
+      '❌ Error: project_name is required when creating a new project.',
     );
-    return;
+    exit(1);
   }
 
-  /// Step 0: Validate Flutter project name syntax
+  // Validate Flutter project name syntax
   final isValidName = RegExp(r'^[a-z][a-z0-9_]*$').hasMatch(projectName);
   if (!isValidName) {
     context.logger.err(
@@ -28,18 +48,14 @@ Future<void> run(HookContext context) async {
 Example: my_flutter_app
 ''',
     );
-    return;
+    exit(1);
   }
 
   context.logger.info('📦 Project Name: $projectName');
-  context.logger.info('🧠 State Management: $stateManagement');
-
-  /// Step 1: Check if the project folder already exists
 
   final projectDir = Directory(projectName);
 
   if (!await projectDir.exists()) {
-    /// Step 2: Run `flutter create`
     context.logger.info('🚀 Creating new Flutter project "$projectName"...');
 
     try {
@@ -49,46 +65,102 @@ Example: my_flutter_app
         runInShell: true,
       );
 
-      // Pipe stdout/stderr to Mason logger
       await stdout.addStream(result.stdout);
       await stderr.addStream(result.stderr);
 
       final exitCode = await result.exitCode;
       if (exitCode != 0) {
-        context.logger
-            .err('❌ Flutter project creation failed with exit code $exitCode.');
-        return;
+        context.logger.err('❌ Flutter project creation failed with exit code $exitCode.');
+        exit(1);
       }
 
-      context.logger
-          .success('✅ Flutter project "$projectName" created successfully.');
+      context.logger.success('✅ Flutter project "$projectName" created successfully.');
     } catch (e) {
       context.logger.err('❌ Error creating Flutter project: $e');
-      return;
+      exit(1);
     }
   } else {
-    context.logger.warn(
-        '⚠️ Folder "$projectName" already exists. Skipping flutter create.');
+    context.logger.warn('⚠️ Folder "$projectName" already exists. Skipping flutter create.');
   }
 
-  ///  Step 3: Create .cleanforge directory and config.json
+  // Create .cleanforge directory and config.json
+  await _createConfig(context, projectName, stateManagement);
+
+  context.logger.success('🎯 Pre-generation setup complete! You can now generate features inside $projectName.');
+}
+
+/// Handle using an existing Flutter project
+Future<String> _handleExistingProject(
+    HookContext context,
+    String projectName,
+    String stateManagement,
+    ) async {
+  final targetDir = projectName.isEmpty ? Directory.current : Directory(projectName);
+
+  final pubspecFile = File('${targetDir.path}/pubspec.yaml');
+  if (!await pubspecFile.exists()) {
+    context.logger.err(
+      '''
+❌ Error: Not a valid Flutter project!
+👉 Please ensure you are in a Flutter project directory or specify a valid project path.
+   Expected to find: pubspec.yaml
+   Current directory: ${targetDir.path}
+''',
+    );
+    exit(1);
+  }
+
+  // Read package name from pubspec.yaml
+  String packageName = 'my_app';
   try {
-    final configDir = Directory('$projectName/.cleanforge');
+    final pubspecContent = await pubspecFile.readAsString();
+    final nameMatch = RegExp(r'^name:\s*(.+)$', multiLine: true).firstMatch(pubspecContent);
+    if (nameMatch != null) {
+      packageName = nameMatch.group(1)!.trim();
+      context.logger.info('📦 Detected package name: $packageName');
+    }
+  } catch (e) {
+    context.logger.warn('⚠️ Could not read package name from pubspec.yaml, using default: $packageName');
+  }
+
+  final actualProjectName = targetDir.path.split(Platform.pathSeparator).last;
+  context.logger.info('📦 Using existing project: $actualProjectName');
+  context.logger.info('📁 Project path: ${targetDir.path}');
+
+  // Create .cleanforge directory and config.json
+  await _createConfig(context, targetDir.path, stateManagement);
+
+  context.logger.success('🎯 Configuration complete! You can now generate features in this project.');
+
+  return packageName;
+}
+
+/// Create .cleanforge directory and config.json
+Future<void> _createConfig(
+    HookContext context,
+    String projectPath,
+    String stateManagement,
+    ) async {
+  try {
+    final configDir = Directory('$projectPath/.cleanforge');
     await configDir.create(recursive: true);
 
-    final configFile = File('$projectName/.cleanforge/config.json');
+    final configFile = File('$projectPath/.cleanforge/config.json');
+
+    final projectName = projectPath.split(Platform.pathSeparator).last;
+
     final config = {
       'project_name': projectName,
+      'package_name': projectName,
       'state_management': stateManagement,
+      'created_at': DateTime.now().toIso8601String(),
     };
 
-    await configFile.writeAsString(jsonEncode(config));
-    context.logger.info('🧩 Created $projectName/.cleanforge/config.json');
+    await configFile.writeAsString(const JsonEncoder.withIndent('  ').convert(config));
+
+    context.logger.info('🧩 Created .cleanforge/config.json');
   } catch (e) {
     context.logger.err('❌ Error creating config.json: $e');
-    return;
+    exit(1);
   }
-
-  context.logger.success(
-      '🎯 Pre-generation setup complete! You can now generate features inside $projectName.');
 }

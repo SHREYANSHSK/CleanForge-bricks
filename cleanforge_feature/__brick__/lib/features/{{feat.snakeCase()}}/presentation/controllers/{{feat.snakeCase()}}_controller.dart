@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/usecases/{{feat.snakeCase()}}_usecase.dart';
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/presentation/states/{{feat.snakeCase()}}_state.dart';
-import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/domain/usecases/{{feat.snakeCase()}}_usecase.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/presentation/states/{{feat.snakeCase()}}_state.dart';
+import 'package:{{package_name}}/common/core/utils/logger/app_logger.dart';
 import 'package:toastification/toastification.dart';
-import 'package:{{project_name}}/common/widgets/toastMessage.dart';
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_request_entity.dart';
+import 'package:{{package_name}}/common/widgets/toast_message.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_request_entity.dart';
 
 
 

@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:{{project_name}}/common/resources/network_resources/rest_client/rest_client.dart';
-import 'package:{{project_name}}/common/core/utils/errors/exceptions.dart';
-import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
-import 'package:{{project_name}}/common/resources/network_resources/api_endpoints.dart';
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/data/models/{{feat.snakeCase()}}_model.dart';
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_request_entity.dart';
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/data/models/{{feat.snakeCase()}}_request_model.dart';
+import 'package:{{package_name}}/common/resources/network_resources/rest_client/rest_client.dart';
+import 'package:{{package_name}}/common/core/utils/errors/exceptions.dart';
+import 'package:{{package_name}}/common/core/utils/logger/app_logger.dart';
+import 'package:{{package_name}}/common/resources/network_resources/api_endpoints.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/data/models/{{feat.snakeCase()}}_model.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_request_entity.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/data/models/{{feat.snakeCase()}}_request_model.dart';
 
 
 

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:{{project_name}}/common/core/theme/theme.dart';
-import 'package:{{project_name}}/app/app_binding.dart';
-import 'package:{{project_name}}/routes/app_pages.dart';
-import 'package:{{project_name}}/common/core/utils/navigator_observer/app_navigator_observer.dart';
-import 'package:{{project_name}}/app/pageNotFound.dart';
-import 'package:{{project_name}}/common/resources/app_resources/app_sizes.dart';
+import 'package:{{package_name}}/common/core/theme/theme.dart';
+import 'package:{{package_name}}/app/app_binding.dart';
+import 'package:{{package_name}}/routes/app_pages.dart';
+import 'package:{{package_name}}/common/core/utils/navigator_observer/app_navigator_observer.dart';
+import 'package:{{package_name}}/app/page_not_found.dart';
+import 'package:{{package_name}}/common/resources/app_resources/app_sizes.dart';
 import 'package:toastification/toastification.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:{{project_name}}/routes/app_routes.dart';
+import 'package:{{package_name}}/routes/app_routes.dart';
 
 
 
@@ -26,7 +26,7 @@ class App extends StatelessWidget {
         splitScreenMode: true,
         builder: (context, child) {
           return GetMaterialApp(
-            title: '{{project_name}}',
+            title: '{{package_name}}',
             initialBinding: AppBinding(),
             initialRoute: AppPages.initial,
             getPages: AppPages.pages,

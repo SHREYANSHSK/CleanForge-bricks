@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
+import 'package:{{package_name}}/common/core/utils/logger/app_logger.dart';
 
 class Helpers {
   Helpers._();

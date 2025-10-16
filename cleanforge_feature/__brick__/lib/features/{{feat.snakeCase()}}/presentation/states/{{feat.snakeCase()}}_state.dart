@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_entity.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_entity.dart';
 
 
 class {{feat.pascalCase()}}State extends GetXState {

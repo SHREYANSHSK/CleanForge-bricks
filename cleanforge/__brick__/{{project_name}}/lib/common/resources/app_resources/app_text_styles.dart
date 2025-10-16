@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:{{project_name}}/common/resources/app_resources/app_sizes.dart';
-import 'package:{{project_name}}/common/resources/app_resources/app_colors.dart';
+import 'package:{{package_name}}/common/resources/app_resources/app_sizes.dart';
+import 'package:{{package_name}}/common/resources/app_resources/app_colors.dart';
 
 
 final TextStyle jetBrainsMono = GoogleFonts.jetBrainsMono(

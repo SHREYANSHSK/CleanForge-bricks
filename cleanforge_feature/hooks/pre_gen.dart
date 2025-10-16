@@ -46,6 +46,7 @@ Future<void> run(HookContext context) async {
 
   /// Update context.vars for template rendering
   context.vars['project_name'] = projectName;
+  context.vars['package_name'] = projectName;
   context.vars['state_management'] = stateManagement;
 
   context.logger.info('Pre-gen: Using project_name: $projectName');

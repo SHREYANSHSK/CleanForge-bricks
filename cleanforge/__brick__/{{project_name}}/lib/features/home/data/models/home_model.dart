@@ -1,4 +1,4 @@
-import 'package:{{project_name}}/features/home/domain/entities/home_entity.dart';
+import 'package:{{package_name}}/features/home/domain/entities/home_entity.dart';
 
 /// This is an example model class extending example model entity
 class HomeModel extends HomeEntity {

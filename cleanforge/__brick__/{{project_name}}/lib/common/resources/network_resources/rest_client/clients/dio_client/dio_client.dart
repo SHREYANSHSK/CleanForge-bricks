@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
-import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
-import 'package:{{project_name}}/common/resources/network_resources/network_info/network_info.dart';
-import 'package:{{project_name}}/common/resources/network_resources/rest_client/clients/dio_client/dio_interceptor.dart';
-import 'package:{{project_name}}/common/resources/network_resources/rest_client/rest_client.dart';
-import 'package:{{project_name}}/common/widgets/toastMessage.dart';
+import 'package:{{package_name}}/common/core/utils/logger/app_logger.dart';
+import 'package:{{package_name}}/common/resources/network_resources/network_info/network_info.dart';
+import 'package:{{package_name}}/common/resources/network_resources/rest_client/clients/dio_client/dio_interceptor.dart';
+import 'package:{{package_name}}/common/resources/network_resources/rest_client/rest_client.dart';
+import 'package:{{package_name}}/common/widgets/toast_message.dart';
 import 'package:toastification/toastification.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:{{project_name}}/common/resources/storage_resources/localKeys.dart';
-import 'package:{{project_name}}/common/resources/storage_resources/local_client.dart';
+import 'package:{{package_name}}/common/resources/storage_resources/local_Keys.dart';
+import 'package:{{package_name}}/common/resources/storage_resources/local_client.dart';
 
 class DioClient extends RestClient {
   late final Dio _dio;

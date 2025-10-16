@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import 'package:{{project_name}}/features/home/domain/usecases/home_usecase.dart';
-import 'package:{{project_name}}/features/home/presentation/states/home_state.dart';
-import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
+import 'package:{{package_name}}/features/home/domain/usecases/home_usecase.dart';
+import 'package:{{package_name}}/features/home/presentation/states/home_state.dart';
+import 'package:{{package_name}}/common/core/utils/logger/app_logger.dart';
 import 'package:toastification/toastification.dart';
-import 'package:{{project_name}}/common/widgets/toastMessage.dart';
-import 'package:{{project_name}}/features/home/domain/entities/home_request_entity.dart';
+import 'package:{{package_name}}/common/widgets/toast_message.dart';
+import 'package:{{package_name}}/features/home/domain/entities/home_request_entity.dart';
 
 
 class HomeController extends GetxController {

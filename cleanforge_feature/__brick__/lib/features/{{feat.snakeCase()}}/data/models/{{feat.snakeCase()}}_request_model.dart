@@ -1,4 +1,4 @@
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_request_entity.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_request_entity.dart';
 
 class {{feat.pascalCase()}}RequestModel extends {{feat.pascalCase()}}RequestEntity {
   {{feat.pascalCase()}}RequestModel({

@@ -1,6 +1,6 @@
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_entity.dart';
-import 'package:{{project_name}}/common/core/utils/type_def/type_def.dart';
-import 'package:{{project_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_request_entity.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_entity.dart';
+import 'package:{{package_name}}/common/core/utils/type_def/type_def.dart';
+import 'package:{{package_name}}/features/{{feat.snakeCase()}}/domain/entities/{{feat.snakeCase()}}_request_entity.dart';
 
 
 abstract class {{feat.pascalCase()}}Repository {

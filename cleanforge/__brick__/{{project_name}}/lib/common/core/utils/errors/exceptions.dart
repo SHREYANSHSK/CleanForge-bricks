@@ -1,5 +1,5 @@
-import 'package:{{project_name}}/common/core/utils/logger/app_logger.dart';
-import 'package:{{project_name}}/common/resources/storage_resources/local_client.dart';
+import 'package:{{package_name}}/common/core/utils/logger/app_logger.dart';
+import 'package:{{package_name}}/common/resources/storage_resources/local_client.dart';
 
 class APIException implements Exception {
   final String message;
