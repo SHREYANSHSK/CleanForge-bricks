@@ -5,9 +5,12 @@ import 'package:mason/mason.dart';
 Future<void> run(HookContext context) async {
   final mode = (context.vars['mode'] as String?)?.trim() ?? 'new_project';
   var projectName = (context.vars['project_name'] as String?)?.trim() ?? '';
-  final stateManagement = (context.vars['state_management'] as String?)?.trim() ?? 'getx';
+  final stateManagement =
+      (context.vars['state_management'] as String?)?.trim() ?? 'getx';
 
-  context.logger.info('🔧 Mode: ${mode == "new_project" ? "Creating New Project" : "Using Existing Project"}');
+
+  context.logger.info(
+      '🔧 Mode: ${mode == "new_project" ? "Creating New Project" : "Using Existing Project"}');
   context.logger.info('🧠 State Management: $stateManagement');
 
   if (mode == 'new_project') {
@@ -16,7 +19,8 @@ Future<void> run(HookContext context) async {
     context.vars['package_name'] = projectName;
   } else {
     // For existing projects, detect package name from pubspec.yaml
-    final packageName = await _handleExistingProject(context, projectName, stateManagement);
+    final packageName =
+        await _handleExistingProject(context, projectName, stateManagement);
     context.vars['project_name'] = '.'; // For file generation path
     context.vars['package_name'] = packageName; // For imports
   }
@@ -24,10 +28,12 @@ Future<void> run(HookContext context) async {
 
 /// Handle creation of a new Flutter project
 Future<void> _handleNewProject(
-    HookContext context,
-    String projectName,
-    String stateManagement,
-    ) async {
+  HookContext context,
+  String projectName,
+  String stateManagement,
+) async {
+  final org = context.vars['org'] as String? ?? 'com.example';
+  final description = context.vars['description'] as String? ?? 'A new Flutter project using Clean Architecture';
   if (projectName.isEmpty) {
     context.logger.err(
       '❌ Error: project_name is required when creating a new project.',
@@ -59,9 +65,15 @@ Example: my_flutter_app
     context.logger.info('🚀 Creating new Flutter project "$projectName"...');
 
     try {
+      // Include org and description only for new project creation
       final result = await Process.start(
         'flutter',
-        ['create', projectName],
+        [
+          'create',
+          projectName,
+          '--org', org,
+          '--description', description,
+        ],
         runInShell: true,
       );
 
@@ -70,32 +82,37 @@ Example: my_flutter_app
 
       final exitCode = await result.exitCode;
       if (exitCode != 0) {
-        context.logger.err('❌ Flutter project creation failed with exit code $exitCode.');
+        context.logger
+            .err('❌ Flutter project creation failed with exit code $exitCode.');
         exit(1);
       }
 
-      context.logger.success('✅ Flutter project "$projectName" created successfully.');
+      context.logger
+          .success('✅ Flutter project "$projectName" created successfully.');
     } catch (e) {
       context.logger.err('❌ Error creating Flutter project: $e');
       exit(1);
     }
   } else {
-    context.logger.warn('⚠️ Folder "$projectName" already exists. Skipping flutter create.');
+    context.logger.warn(
+        '⚠️ Folder "$projectName" already exists. Skipping flutter create.');
   }
 
   // Create .cleanforge directory and config.json
   await _createConfig(context, projectName, stateManagement);
 
-  context.logger.success('🎯 Pre-generation setup complete! You can now generate features inside $projectName.');
+  context.logger.success(
+      '🎯 Pre-generation setup complete! You can now generate features inside $projectName.');
 }
 
 /// Handle using an existing Flutter project
 Future<String> _handleExistingProject(
-    HookContext context,
-    String projectName,
-    String stateManagement,
-    ) async {
-  final targetDir = projectName.isEmpty ? Directory.current : Directory(projectName);
+  HookContext context,
+  String projectName,
+  String stateManagement,
+) async {
+  final targetDir =
+      projectName.isEmpty ? Directory.current : Directory(projectName);
 
   final pubspecFile = File('${targetDir.path}/pubspec.yaml');
   if (!await pubspecFile.exists()) {
@@ -114,13 +131,15 @@ Future<String> _handleExistingProject(
   String packageName = 'my_app';
   try {
     final pubspecContent = await pubspecFile.readAsString();
-    final nameMatch = RegExp(r'^name:\s*(.+)$', multiLine: true).firstMatch(pubspecContent);
+    final nameMatch =
+        RegExp(r'^name:\s*(.+)$', multiLine: true).firstMatch(pubspecContent);
     if (nameMatch != null) {
       packageName = nameMatch.group(1)!.trim();
       context.logger.info('📦 Detected package name: $packageName');
     }
   } catch (e) {
-    context.logger.warn('⚠️ Could not read package name from pubspec.yaml, using default: $packageName');
+    context.logger.warn(
+        '⚠️ Could not read package name from pubspec.yaml, using default: $packageName');
   }
 
   final actualProjectName = targetDir.path.split(Platform.pathSeparator).last;
@@ -130,17 +149,18 @@ Future<String> _handleExistingProject(
   // Create .cleanforge directory and config.json
   await _createConfig(context, targetDir.path, stateManagement);
 
-  context.logger.success('🎯 Configuration complete! You can now generate features in this project.');
+  context.logger.success(
+      '🎯 Configuration complete! You can now generate features in this project.');
 
   return packageName;
 }
 
 /// Create .cleanforge directory and config.json
 Future<void> _createConfig(
-    HookContext context,
-    String projectPath,
-    String stateManagement,
-    ) async {
+  HookContext context,
+  String projectPath,
+  String stateManagement,
+) async {
   try {
     final configDir = Directory('$projectPath/.cleanforge');
     await configDir.create(recursive: true);
@@ -156,7 +176,8 @@ Future<void> _createConfig(
       'created_at': DateTime.now().toIso8601String(),
     };
 
-    await configFile.writeAsString(const JsonEncoder.withIndent('  ').convert(config));
+    await configFile
+        .writeAsString(const JsonEncoder.withIndent('  ').convert(config));
 
     context.logger.info('🧩 Created .cleanforge/config.json');
   } catch (e) {

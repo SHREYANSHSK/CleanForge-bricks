@@ -34,6 +34,16 @@ graph TD
     end
 ```
 
+## Flutter Version Compatibility
+
+The generated code is optimized for Flutter version 3.35.2. If you're using a lower Flutter version, you might need to modify some syntax in the generated code to ensure compatibility. Key considerations:
+
+- Some newer Flutter widgets and APIs might not be available in older versions
+- Certain null-safety syntax might need adjustment for pre-2.0 versions
+- Some package dependencies might require version downgrades
+
+For the best experience, we recommend using Flutter 3.35.2 or later. If you need to use an older version, please review the generated code and make necessary adjustments.
+
 ## Project Structure
 
 The project follows a modular structure with each file having a specific responsibility:
@@ -150,6 +160,18 @@ mason add cleanforge
 mason add cleanforge_feature
 ```
 
+## Example Project
+
+To help you get started, we maintain a fully implemented example project that demonstrates:
+- Complete Clean Architecture implementation
+- API integration with proper error handling
+- GetX state management implementation
+- Feature organization
+- Theme management
+- Network layer setup
+
+Check out the example project: [CleanForge Example](https://github.com/SHREYANSHSK/CleanForge-example)
+
 ## Usage
 
 ### Creating a New Project
@@ -162,6 +184,8 @@ mason make cleanforge
 
 # Or with direct arguments
 mason make cleanforge --project_name my_app
+
+mason make cleanforge --mode new_project --project_name my_awesome_app --org com.mycompany --description "My awesome Flutter app"
 ```
 
 Note: Some IDE integrated terminals (VS Code, Android Studio) may not handle interactive prompts reliably. If the interactive prompt doesn't work in your IDE terminal, either:
@@ -319,6 +343,37 @@ graph TD
    - Follow Dart style guidelines
    - Maintain consistent naming conventions
    - Document public APIs
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Interactive Prompt Not Working**
+   - Use system terminal instead of IDE terminal
+   - Use command flags (see Usage section)
+   - Check terminal permissions
+
+2. **Wrong Command Usage**
+   ```bash
+   # Correct usage for new project
+   mason make cleanforge --project_name my_app
+
+   # Correct usage for new feature
+   mason make cleanforge_feature --feat auth
+   ```
+
+3. **Need Implementation Examples?**
+   - Check our [CleanForge Example](https://github.com/SHREYANSHSK/CleanForge-example) project
+   - Contains complete implementation with API integration
+   - Demonstrates proper architecture patterns
+
+### Getting Help
+
+If you're stuck or need inspiration:
+1. Review the example project: [CleanForge Example](https://github.com/SHREYANSHSK/CleanForge-example)
+2. Check common issues above
+3. Open an issue on GitHub
+4. Review existing implementations in the example project
 
 ## Contributing
 

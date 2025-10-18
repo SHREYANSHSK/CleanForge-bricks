@@ -1,6 +1,12 @@
-# cleanforge_bricks
+# CleanForge Bricks 🏗️
 
-CleanForge is a Mason brick that generates Flutter projects with Clean Architecture, supporting flexible state management (GetX for now, extensible for others like Bloc or Riverpod). It creates a modular structure with data, domain, and presentation layers, including packages like dio, logger, and dartz. Features auto-routing and a separate brick to add new feature modules effortlessly.
+[![Pub Version](https://img.shields.io/pub/v/cleanforge_bricks)](https://pub.dev/packages/cleanforge_bricks)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Flutter: v3.35.2](https://img.shields.io/badge/Flutter-v3.35.2-blue.svg)](https://flutter.dev)
+[![GitHub Issues](https://img.shields.io/github/issues/SHREYANSHSK/cleanforge_bricks)](https://github.com/SHREYANSHSK/cleanforge_bricks/issues)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+CleanForge is a powerful Mason brick that generates Flutter projects with Clean Architecture, supporting flexible state management (GetX for now, extensible for others like Bloc or Riverpod). It creates a modular structure with data, domain, and presentation layers, including essential packages like dio, logger, and dartz. Features auto-routing and a separate brick to add new feature modules effortlessly.
 
 ## Getting Started
 

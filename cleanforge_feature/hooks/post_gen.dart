@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:mason/mason.dart';
+import 'src/help_message.dart' as showFeatureHelpMsg;
 
 Future<void> run(HookContext context) async {
   final featureName = (context.vars['feat'] as String?)?.trim() ?? '';
@@ -145,9 +146,9 @@ Future<void> run(HookContext context) async {
   try {
     context.logger.info('Running "dart fix" to fix all files...');
     final result = await Process.run(
-        'dart',
-        ['fix', '--apply'],
-        runInShell: true,
+      'dart',
+      ['fix', '--apply'],
+      runInShell: true,
     );
 
     if (result.exitCode == 0) {
@@ -162,4 +163,6 @@ Future<void> run(HookContext context) async {
 
   context.logger.success('🎉 Feature "$featureName" added successfully!');
   context.logger.info('Run `flutter pub get` if needed.');
+
+  showFeatureHelpMsg.showFeatureHelpMessage(context, featureName);
 }

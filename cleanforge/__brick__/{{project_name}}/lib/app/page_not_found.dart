@@ -8,13 +8,11 @@ class PageNotFound extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(),
-      body: Center(
-        child: Text(
-            AppStrings.pageNotFound,style: Theme.of(context).textTheme.displayLarge),
-        ),
-      ),
-    );
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(),
+        body: Center(
+          child: Text(AppStrings.pageNotFound,
+              style: Theme.of(context).textTheme.displayLarge),
+        ));
   }
 }

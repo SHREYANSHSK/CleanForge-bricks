@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:convert';
 import 'package:mason/mason.dart';
+import 'src/help_message.dart' as helpMessage;
 
 Future<void> run(HookContext context) async {
   final progress = context.logger.progress('Adding dependencies with flutter pub add');
@@ -48,12 +49,14 @@ Future<void> run(HookContext context) async {
     if (flutterCheck.exitCode == 0) {
       context.logger.info('✅ Flutter detected successfully');
     } else {
-      context.logger.warn('⚠️ Flutter version check failed: ${flutterCheck.stderr}');
+      context.logger
+          .warn('⚠️ Flutter version check failed: ${flutterCheck.stderr}');
       context.logger.info('Ensure `flutter` is in your system PATH.');
     }
   } catch (e) {
     context.logger.warn('⚠️ Error checking Flutter: $e');
-    context.logger.info('Continuing with package addition despite Flutter version check failure.');
+    context.logger.info(
+        'Continuing with package addition despite Flutter version check failure.');
     context.logger.info('Ensure `flutter` is in your system PATH.');
   }
 
@@ -91,6 +94,7 @@ Future<void> run(HookContext context) async {
   } catch (e) {
     context.logger.err('❌ Error adding packages: $e');
   }
+
 
   // Format all Dart files
   try {
@@ -131,4 +135,7 @@ Future<void> run(HookContext context) async {
   }
 
   progress.complete('✅ Dependencies addition process completed');
+
+  // Show help message
+  helpMessage.showHelpMessage(context);
 }

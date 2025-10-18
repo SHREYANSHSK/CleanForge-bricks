@@ -24,20 +24,36 @@ vars:
       - new_project
       - existing_project
     default: new_project
-    prompt: "Do you want to create a new project or use an existing one?"
+    prompt: Is this a new project or existing project?
 
+
+  # Dont set the default to some value until logic changed in hooks, let it be empty if you dont know what you are doing
   project_name:
     type: string
-    description: Project name (required for new project, uses current directory for existing)
-    default: ""
+    description: Name of the project (use lowercase_with_underscore)
     prompt: "Enter your project name (press Enter to use current directory for existing project):"
+    default: ""
 
+
+  # Dont set the default to some value until logic changed in hooks, let it be empty if you dont know what you are doing
   package_name:
     type: string
     description: Package name for imports (auto-detected)
     default: ""
-    prompt: "Press Enter or give same name as project_name"
+    prompt: "Enter your package name (press Enter for auto detection):"
 
+
+  org:
+    type: string
+    description: Organization name (e.g., com.example)
+    prompt: What is your organization name? (press enter for existing project or use default)
+    default: com.example
+
+  description:
+    type: string
+    description: A brief description of your project
+    prompt: Describe your project (optional)
+    default: A new Flutter project using Clean Architecture
 
   state_management:
     type: enum
