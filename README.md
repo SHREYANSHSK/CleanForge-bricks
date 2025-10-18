@@ -1,22 +1,97 @@
 # CleanForge Bricks 🏗️
 
-[![Pub Version](https://img.shields.io/pub/v/cleanforge_bricks)](https://pub.dev/packages/cleanforge_bricks)
+A collection of Mason bricks for generating Flutter applications using Clean Architecture with GetX state management.
+
+[![Powered by Mason](https://img.shields.io/badge/Powered%20by-Mason-blue.svg)](https://github.com/felangel/mason)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Flutter: v3.35.2](https://img.shields.io/badge/Flutter-v3.35.2-blue.svg)](https://flutter.dev)
-[![GitHub Issues](https://img.shields.io/github/issues/SHREYANSHSK/cleanforge_bricks)](https://github.com/SHREYANSHSK/cleanforge_bricks/issues)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-CleanForge is a powerful Mason brick that generates Flutter projects with Clean Architecture, supporting flexible state management (GetX for now, extensible for others like Bloc or Riverpod). It creates a modular structure with data, domain, and presentation layers, including essential packages like dio, logger, and dartz. Features auto-routing and a separate brick to add new feature modules effortlessly.
+## Overview 📝
 
-## Getting Started
+CleanForge Bricks provides a robust toolkit for scaffolding Flutter applications with Clean Architecture principles. It includes:
 
-This project is a starting point for a Flutter application.
+- 🏢 **Project Generation**: Complete project structure with Clean Architecture
+- ⚡ **Feature Generation**: Rapid feature development with full layer compliance
+- 🎯 **GetX Integration**: Built-in GetX state management
+- 🔧 **Customizable**: Extensive hooks for customization
 
-A few resources to get you started if this is your first Flutter project:
+## Installation 💻
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```bash
+# Install Mason CLI globally
+dart pub global activate mason_cli
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Add bricks to your project
+mason add cleanforge
+mason add cleanforge_feature
+```
+
+## Usage 🚀
+
+### Creating a New Project
+
+```bash
+mason make cleanforge --project_name my_awesome_app
+```
+
+### Generating a Feature
+
+```bash
+mason make cleanforge_feature --feat authentication
+```
+
+## Project Structure 📁
+
+```
+lib/
+├── app/                # App configuration
+├── common/            # Shared code
+│   ├── core/         # Core utilities
+│   ├── resources/    # App resources
+│   └── widgets/      # Shared widgets
+├── features/         # Feature modules
+└── routes/           # Navigation
+```
+
+## Features ✨
+
+- 🏛️ **Clean Architecture** compliance
+- 📦 **Feature-first** organization
+- 🔄 **GetX** state management
+- 🎨 **Presentation Layer** scaffolding
+- 🔧 **Domain Layer** setup
+- 💾 **Data Layer** generation
+- 🧪 **Test Templates**
+- 📱 **Screen Templates**
+
+## Documentation 📚
+
+- [Feature Guide](docs/FEATURE_GUIDE.md)
+- [Hooks Guide](docs/HOOKS_GUIDE.md)
+- [Architecture Guide](docs/ARCHITECTURE_GUIDE.md)
+- [Roadmap](docs/ROADMAP.md)
+
+## Contributing 🤝
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+Please read our [Contributing Guide](.github/CONTRIBUTING.md) for details.
+
+## License 📄
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments 🙏
+
+- [Mason](https://github.com/felangel/mason)
+- [GetX](https://github.com/jonataslaw/getx)
+- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+
+## Support ❤️
+
+If you find this project helpful, please consider giving it a ⭐️!
+
+For issues and feature requests, please create a new [issue](https://github.com/yourusername/cleanforge_bricks/issues).
