@@ -2,6 +2,8 @@
 
 This document provides detailed information about creating and managing features using CleanForge Feature Brick.
 
+[← Back to Main Documentation](README.md) | [Hooks Guide →](HOOKS_GUIDE.md)
+
 ## Key Features
 
 ### 1. Automatic Routing Integration

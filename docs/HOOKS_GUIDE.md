@@ -2,6 +2,8 @@
 
 This guide explains the hooks used in CleanForge bricks and their functionality. Hooks are special scripts that run before (`pre_gen.dart`) and after (`post_gen.dart`) the brick generation process.
 
+[← Back to Main Documentation](README.md) | [Feature Guide →](FEATURE_GUIDE.md)
+
 ## Cleanforge Brick Hooks
 
 ### Pre-Generation Hook (`pre_gen.dart`)
