@@ -14,7 +14,7 @@ class AppSizes {
   static bool isTablet(double screenWidth) => screenWidth >= 768 && screenWidth < 1024;
   static bool isLargeScreen(double screenWidth) => screenWidth >= 1024;
 
-  // Font sizes
+  /// Font sizes
   static final double f3 = 3.sp;
   static final double f4 = 4.sp;
   static final double f5 = 5.sp;
@@ -114,7 +114,7 @@ class AppSizes {
   static final double f99 = 99.sp;
   static final double f100 = 100.sp;
 
-  // Heights
+  /// Heights
   static final double h0 = 0.h;
   static final double h1 = 1.h;
   static final double h2 = 2.h;
@@ -338,7 +338,7 @@ class AppSizes {
   static final double h1373 = 1373.h;
 
 
-  // Widths
+  /// Widths
   static final double w1 = 1.w;
   static final double w2 = 2.w;
   static final double w3 = 3.w;
@@ -562,7 +562,7 @@ class AppSizes {
   static final double w960 = 960.w;
   static final double w1200 = 1200.w;
 
-  // Radius
+  /// Radius
   static final double r2 = 2.r;
   static final double r6 = 6.r;
   static final double r8 = 8.r;
@@ -572,7 +572,7 @@ class AppSizes {
   static final double r80 = 80.r;
 
 
-  // Values
+  /// Values
   static double get v1 => w1;
   static double get v2 => w2;
   static double get v3 => w3;

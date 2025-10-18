@@ -4,6 +4,7 @@ import 'package:{{package_name}}/common/resources/app_resources/app_colors.dart'
 import 'package:{{package_name}}/common/resources/app_resources/app_text_styles.dart';
 import 'package:toastification/toastification.dart';
 
+/// A common utility widget to show necessary info to user
 ToastificationItem showToastNotification({
   required String title,
   required String body,

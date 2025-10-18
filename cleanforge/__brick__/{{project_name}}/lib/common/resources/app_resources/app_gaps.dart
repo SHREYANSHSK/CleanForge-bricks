@@ -5,7 +5,7 @@ import 'app_sizes.dart';
 class AppGaps {
   AppGaps._();
 
-  /// Horizontal gaps with width (w) from 2 to 200, using AppSizes for responsiveness.
+  /// Horizontal gaps with width (w) from 2 to 200 and beyond, using AppSizes for responsiveness.
   static SizedBox w2 = SizedBox(width: AppSizes.w2);
   static SizedBox w3 = SizedBox(width: AppSizes.w3);
   static SizedBox w4 = SizedBox(width: AppSizes.w4);

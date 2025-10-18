@@ -8,7 +8,7 @@ class RCheckboxTheme {
 
   /// Customizable Light Text Theme
   static CheckboxThemeData lightCheckboxTheme = CheckboxThemeData(
-    side: BorderSide(width: AppSizes.v1, color: AppColors.black4),
+    side: BorderSide(width: AppSizes.w1, color: AppColors.black4),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(AppSizes.v4),
     ),
@@ -21,7 +21,7 @@ class RCheckboxTheme {
     }),
     fillColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
-        return AppColors.cyan;
+        return AppColors.primary;
       } else {
         return Colors.transparent;
       }
@@ -29,22 +29,24 @@ class RCheckboxTheme {
   );
 
   /// Customizable Dark Text Theme
-  // static CheckboxThemeData darkCheckboxTheme = CheckboxThemeData(
-  //   shape:
-  //       RoundedRectangleBorder(borderRadius: BorderRadius.circular(RSizes.xs)),
-  //   checkColor: MaterialStateProperty.resolveWith((states) {
-  //     if (states.contains(MaterialState.selected)) {
-  //       return RColors.white;
-  //     } else {
-  //       return RColors.black;
-  //     }
-  //   }),
-  //   fillColor: MaterialStateProperty.resolveWith((states) {
-  //     if (states.contains(MaterialState.selected)) {
-  //       return RColors.primary;
-  //     } else {
-  //       return Colors.transparent;
-  //     }
-  //   }),
-  // );
+  static CheckboxThemeData darkCheckboxTheme = CheckboxThemeData(
+    side: BorderSide(width: AppSizes.w1, color: AppColors.white),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(AppSizes.v4),
+    ),
+    checkColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
+        return AppColors.white;
+      } else {
+        return AppColors.black;
+      }
+    }),
+    fillColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
+        return AppColors.primary;
+      } else {
+        return Colors.transparent;
+      }
+    }),
+  );
 }

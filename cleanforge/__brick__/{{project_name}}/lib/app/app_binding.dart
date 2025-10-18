@@ -3,6 +3,8 @@ import 'package:{{package_name}}/common/resources/network_resources/rest_client/
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:{{package_name}}/common/resources/network_resources/network_info/network_info.dart';
 import 'package:{{package_name}}/common/resources/network_resources/rest_client/clients/dio_client/dio_client.dart';
+import 'package:{{package_name}}/common/core/theme/theme_controller.dart';
+
 
 class AppBinding extends Bindings {
   @override
@@ -11,8 +13,12 @@ class AppBinding extends Bindings {
     Get.lazyPut<NetworkInfo>(
           () => NetworkInfo(connectivity: Connectivity()),
     );
+
     Get.lazyPut<RestClient>(
           () => DioClient(networkInfo: Get.find()),
     );
+
+    // Register theme controller
+    Get.put(ThemeController(), permanent: true);
   }
 }

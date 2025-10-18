@@ -8,10 +8,8 @@ import 'package:{{package_name}}/app/page_not_found.dart';
 import 'package:{{package_name}}/common/resources/app_resources/app_sizes.dart';
 import 'package:toastification/toastification.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:{{package_name}}/common/core/theme/theme_controller.dart';
 import 'package:{{package_name}}/routes/app_routes.dart';
-
-
-
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -25,27 +23,23 @@ class App extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {
-          return GetMaterialApp(
-            title: '{{package_name}}',
-            initialBinding: AppBinding(),
-            initialRoute: AppPages.initial,
-            getPages: AppPages.pages,
-            unknownRoute: GetPage(
-              name: AppRoutes.pageNotFound,
-              page: () => const PageNotFound(),
-            ),
-            navigatorObservers: [AppNavigatorObserver()],
-            useInheritedMediaQuery: true,
-            themeMode: ThemeMode.system,
-            theme: AppTheme.lightTheme,
-          );
+          return Obx(() => GetMaterialApp(
+                title: '{{package_name}}',
+                initialBinding: AppBinding(),
+                initialRoute: AppPages.initial,
+                getPages: AppPages.pages,
+                unknownRoute: GetPage(
+                  name: AppRoutes.pageNotFound,
+                  page: () => const PageNotFound(),
+                ),
+                navigatorObservers: [AppNavigatorObserver()],
+                useInheritedMediaQuery: true,
+                theme: AppTheme.lightTheme,
+                darkTheme: AppTheme.darkTheme,
+                themeMode: ThemeController.currentTheme.value,
+              ));
         },
       ),
     );
-
-
-
-
-
   }
 }

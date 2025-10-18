@@ -6,7 +6,7 @@ import 'package:{{package_name}}/common/resources/network_resources/rest_client/
 import 'package:{{package_name}}/common/widgets/toast_message.dart';
 import 'package:toastification/toastification.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:{{package_name}}/common/resources/storage_resources/local_Keys.dart';
+import 'package:{{package_name}}/common/resources/storage_resources/local_keys.dart';
 import 'package:{{package_name}}/common/resources/storage_resources/local_client.dart';
 
 class DioClient extends RestClient {

@@ -1,14 +1,14 @@
-
 import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
 
+/// This is an example of commonly use gradient class file
 class AppGradients {
   static const cyanPurpleGradient = LinearGradient(
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
     colors: [
-      AppColors.cyan,
+      AppColors.primary,
       AppColors.purple,
     ],
   );
@@ -18,7 +18,4 @@ class AppGradients {
       AppColors.black,
     ],
   );
-static const tealDarkTealGradient = LinearGradient(
-  colors: [AppColors.teal, AppColors.darkTeal86],
-);
 }

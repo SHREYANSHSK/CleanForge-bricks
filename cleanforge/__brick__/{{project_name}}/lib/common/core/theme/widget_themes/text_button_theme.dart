@@ -3,38 +3,34 @@ import 'package:{{package_name}}/common/resources/app_resources/app_colors.dart'
 import 'package:{{package_name}}/common/resources/app_resources/app_sizes.dart';
 import 'package:{{package_name}}/common/resources/app_resources/app_text_styles.dart';
 
-/* -- Light & Dark Elevated Button Themes -- */
 class RTextButtonTheme {
-  RTextButtonTheme._(); //To avoid creating instances
+  RTextButtonTheme._();
 
-  /* -- Light Theme -- */
+  /// Theme configuration for TextButton in light mode.
   static final lightTextButtonTheme = TextButtonThemeData(
     style: TextButton.styleFrom(
-      padding: EdgeInsets.zero,
-visualDensity: VisualDensity.compact,
-      disabledForegroundColor: AppColors.white2,
       foregroundColor: AppColors.white,
-      iconSize: AppSizes.h10,
-      backgroundColor: Colors.transparent,side: BorderSide.none,
-      disabledBackgroundColor: AppColors.black4,
-      textStyle: AppTextStyles.interMediumRegular,
+      disabledForegroundColor: AppColors.white2,
+      backgroundColor: Colors.transparent,
+      side: BorderSide.none,
+      padding: EdgeInsets.zero,
+      visualDensity: VisualDensity.compact,
+      iconSize: AppSizes.h16,
+      textStyle: AppTextStyles.interMediumRegular.copyWith(color: AppColors.black),
     ),
   );
 
-  /* -- Dark Theme -- */
-  // static final darkElevatedButtonTheme = ElevatedButtonThemeData(
-  //   style: ElevatedButton.styleFrom(
-  //     elevation: 0,
-  //     foregroundColor: RColors.light,
-  //     backgroundColor: RColors.primary,
-  //     disabledForegroundColor: RColors.darkGrey,
-  //     disabledBackgroundColor: RColors.darkerGrey,
-  //     side: const BorderSide(color: RColors.primary),
-  //     padding: const EdgeInsets.symmetric(vertical: RSizes.buttonHeight),
-  //     textStyle: const TextStyle(
-  //         fontSize: 16, color: RColors.textWhite, fontWeight: FontWeight.w600),
-  //     shape: RoundedRectangleBorder(
-  //         borderRadius: BorderRadius.circular(RSizes.buttonRadius)),
-  //   ),
-  // );
+  /// Theme configuration for TextButton in dark mode.
+  static final darkTextButtonTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      foregroundColor: AppColors.white,
+      disabledForegroundColor: AppColors.white2,
+      backgroundColor: Colors.transparent,
+      side: BorderSide.none,
+      padding: EdgeInsets.zero,
+      visualDensity: VisualDensity.compact,
+      iconSize: AppSizes.h16,
+      textStyle: AppTextStyles.interMediumRegular.copyWith(color: AppColors.white),
+    ),
+  );
 }

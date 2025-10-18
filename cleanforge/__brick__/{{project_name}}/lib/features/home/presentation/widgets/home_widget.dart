@@ -6,6 +6,6 @@ class HomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text(AppStrings.homeText);
+    return Center(child:Text(AppStrings.homeText,style: Theme.of(context).textTheme.displayLarge,));
   }
 }

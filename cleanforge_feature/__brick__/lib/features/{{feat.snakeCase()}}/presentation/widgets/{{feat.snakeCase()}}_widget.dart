@@ -5,6 +5,6 @@ class {{feat.pascalCase()}}Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('{{feat.pascalCase()}} Widget');
+    return Center(child:Text('{{feat.pascalCase()}} Widget',style: Theme.of(context).textTheme.displayLarge,));
   }
 }

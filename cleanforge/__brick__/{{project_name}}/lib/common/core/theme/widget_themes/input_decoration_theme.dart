@@ -9,134 +9,132 @@ class RTextFormFieldTheme {
   static InputDecorationTheme lightInputDecorationTheme = InputDecorationTheme(
     errorMaxLines: 3,
     filled: true,
-    fillColor: AppColors.black2,
+    fillColor: AppColors.white,
 
     // Icon colors
-    prefixIconColor: AppColors.white2,
-    suffixIconColor: AppColors.white2,
+    prefixIconColor: AppColors.primary,
+    suffixIconColor: AppColors.primary,
 
     // Text styles
-    hintStyle: AppTextStyles.interSmallMedium.copyWith(
-      color: AppColors.white2,
+    hintStyle: AppTextStyles.interNormalRegular.copyWith(
+      color: AppColors.black2,
     ),
     labelStyle: AppTextStyles.interExtraSmallMedium.copyWith(
-      color: AppColors.white2,
+      color: AppColors.black2,
     ),
     floatingLabelStyle: AppTextStyles.interExtraSmallMedium.copyWith(
-      color: AppColors.white,
+      color: AppColors.primary,
     ),
     errorStyle: AppTextStyles.interExtraSmallRegular.copyWith(
-      color: Colors.red,
+      color: AppColors.red,
       height: 1.2,
     ),
     helperStyle: AppTextStyles.interExtraSmallRegular.copyWith(
-      color: AppColors.white2.withValues(alpha: 0.8),
+      color: AppColors.black4,
     ),
 
     // Content padding
     contentPadding: EdgeInsets.symmetric(
-      horizontal: AppSizes.v16,
-      vertical: AppSizes.v12,
+      horizontal: AppSizes.w16,
+      vertical: AppSizes.h16,
     ),
 
     // Borders
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppSizes.r6),
-      borderSide: BorderSide(color: AppColors.black4),
+      borderRadius: BorderRadius.circular(AppSizes.r8),
+      borderSide: BorderSide(color: AppColors.primary, width: AppSizes.w1),
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppSizes.r6),
-      borderSide: BorderSide(color: AppColors.cyanbg),
+      borderRadius: BorderRadius.circular(AppSizes.r8),
+      borderSide: BorderSide(color: AppColors.primary, width: AppSizes.w1),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppSizes.r6),
-      borderSide: BorderSide(color: AppColors.cyanbg, width: 2),
+      borderRadius: BorderRadius.circular(AppSizes.r8),
+      borderSide: BorderSide(color: AppColors.blue, width: AppSizes.w2),
     ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppSizes.r6),
-      borderSide: BorderSide(color: Colors.red, width: 1),
+      borderRadius: BorderRadius.circular(AppSizes.r8),
+      borderSide: const BorderSide(color: AppColors.red),
     ),
     focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppSizes.r6),
-      borderSide: BorderSide(color: Colors.red, width: 2),
-    ),
-    disabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppSizes.r6),
-      borderSide: BorderSide(color: AppColors.black4.withValues(alpha: 0.5)),
+      borderRadius: BorderRadius.circular(AppSizes.r8),
+      borderSide: BorderSide(color: AppColors.red, width: AppSizes.w2),
     ),
   );
 
-  /*static InputDecorationTheme darkInputDecorationTheme = InputDecorationTheme(
+  static InputDecorationTheme darkInputDecorationTheme = InputDecorationTheme(
     errorMaxLines: 3,
     filled: true,
-    fillColor: AppColors.black2,
+    fillColor: AppColors.black6,
 
     // Icon colors
-    prefixIconColor: AppColors.white2,
-    suffixIconColor: AppColors.white2,
+    prefixIconColor: AppColors.primary,
+    suffixIconColor: AppColors.primary,
 
     // Text styles
-    hintStyle: AppTextStyles.interExtraSmallRegular.copyWith(
-      color: AppColors.white2.withOpacity(0.6),
+    hintStyle: AppTextStyles.interNormalRegular.copyWith(
+      color: AppColors.white2,
     ),
     labelStyle: AppTextStyles.interExtraSmallMedium.copyWith(
       color: AppColors.white2,
     ),
     floatingLabelStyle: AppTextStyles.interExtraSmallMedium.copyWith(
-      color: AppColors.white,
+      color: AppColors.primary,
     ),
     errorStyle: AppTextStyles.interExtraSmallRegular.copyWith(
-      color: Colors.redAccent,
+      color: AppColors.red,
       height: 1.2,
     ),
     helperStyle: AppTextStyles.interExtraSmallRegular.copyWith(
-      color: AppColors.white2.withOpacity(0.7),
+      color: AppColors.white2,
     ),
 
     // Content padding
     contentPadding: EdgeInsets.symmetric(
-      horizontal: AppSizes.v16,
+      horizontal: AppSizes.h16,
       vertical: AppSizes.v12,
     ),
 
     // Borders
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppSizes.r6),
-      borderSide: BorderSide(color: AppColors.black4),
+      borderRadius: BorderRadius.circular(AppSizes.r8),
+      borderSide: BorderSide(color: AppColors.primary, width: AppSizes.w1),
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppSizes.r6),
-      borderSide: BorderSide(color: AppColors.black4),
+      borderRadius: BorderRadius.circular(AppSizes.r8),
+      borderSide:
+          BorderSide(color: AppColors.primary, width: AppSizes.w1),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppSizes.r6),
-      borderSide: BorderSide(color: AppColors.cyan, width: 2),
+      borderRadius: BorderRadius.circular(AppSizes.r8),
+      borderSide: BorderSide(color: AppColors.primary, width: AppSizes.w2),
     ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppSizes.r6),
-      borderSide: BorderSide(color: Colors.redAccent, width: 1),
+      borderRadius: BorderRadius.circular(AppSizes.r8),
+      borderSide: BorderSide(color: AppColors.red, width: AppSizes.w1),
     ),
     focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppSizes.r6),
-      borderSide: BorderSide(color: Colors.redAccent, width: 2),
+      borderRadius: BorderRadius.circular(AppSizes.r8),
+      borderSide: BorderSide(color: AppColors.red, width: AppSizes.w2),
     ),
     disabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppSizes.r6),
-      borderSide: BorderSide(color: AppColors.black4.withOpacity(0.3)),
+      borderRadius: BorderRadius.circular(AppSizes.r8),
+      borderSide:
+          BorderSide(color: AppColors.white2, width: AppSizes.w1),
     ),
   );
 
   // Custom theme for specific use cases
   static InputDecorationTheme searchFieldTheme = InputDecorationTheme(
     filled: true,
-    fillColor: AppColors.black2.withOpacity(0.8),
+    fillColor: AppColors.black6,
     hintStyle: AppTextStyles.interSmallRegular.copyWith(
-      color: AppColors.white2.withOpacity(0.6),
+      color: AppColors.white2,
     ),
-    prefixIconColor: AppColors.white2,
+    prefixIconColor: AppColors.primary,
     contentPadding: EdgeInsets.symmetric(
-      horizontal: AppSizes.v12,
-      vertical: AppSizes.v8,
+      horizontal: AppSizes.h12,
+      vertical: AppSizes.v12,
     ),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(AppSizes.r8),
@@ -148,7 +146,7 @@ class RTextFormFieldTheme {
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(AppSizes.r8),
-      borderSide: BorderSide(color: AppColors.cyan, width: 1),
+      borderSide: BorderSide(color: AppColors.primary, width: AppSizes.w1),
     ),
-  );*/
+  );
 }
