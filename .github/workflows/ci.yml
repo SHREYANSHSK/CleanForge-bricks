@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ master, develop ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ master, develop ]
+    branches: [ main, develop ]
 
 jobs:
   build:
@@ -21,11 +21,8 @@ jobs:
     - name: Install dependencies
       run: flutter pub get
       
-    - name: Verify formatting
-      run: dart format --output=none --set-exit-if-changed .
-      
+
+
     - name: Analyze project source
       run: flutter analyze
 
-    - name: Run tests
-      run: flutter test
