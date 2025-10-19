@@ -69,6 +69,8 @@ lib/
 - [Hooks Guide](docs/HOOKS_GUIDE.md)
 - [Architecture Guide](docs/ARCHITECTURE_GUIDE.md)
 - [Roadmap](docs/ROADMAP.md)
+- [Medium Doc](https://medium.com/@khandelwal.shreyansh.sk/getting-started-with-cleanforge-bricks-flutter-clean-architecture-made-easy-30aa57e27abb)
+
 
 ## Contributing 🤝
 
