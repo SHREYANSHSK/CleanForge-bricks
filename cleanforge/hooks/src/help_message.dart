@@ -3,9 +3,10 @@ import 'package:mason/mason.dart';
 void showHelpMessage(HookContext context) {
   final mode = context.vars['mode'] as String?;
   final projectName = context.vars['project_name'] as String?;
-  
-  context.logger.success('\n✨ ${mode == 'new_project' ? 'Project created' : 'Clean Architecture added'} successfully! ✨\n');
-  
+
+  context.logger.success(
+      '\n✨ ${mode == 'new_project' ? 'Project created' : 'Clean Architecture added'} successfully! ✨\n');
+
   context.logger.info('''
 
 
@@ -28,7 +29,8 @@ void showHelpMessage(HookContext context) {
   • And more...
 
 💡 For more information:
-  • Documentation: https://github.com/SHREYANSHSK/cleanforge_bricks
+  • Github Repo: https://github.com/SHREYANSHSK/cleanforge_bricks
+  • Detail Documentation: https://shreyanshsk.github.io/CleanForge-bricks/
   • Example Project: https://github.com/SHREYANSHSK/CleanForge-example
   • Report issues: https://github.com/SHREYANSHSK/cleanforge_bricks/issues
 
