@@ -1,8 +1,9 @@
 import 'package:mason/mason.dart';
 
 void showFeatureHelpMessage(HookContext context, String featureName) {
-  context.logger.success('\n✨ Feature "$featureName" generated successfully! ✨\n');
-  
+  context.logger
+      .success('\n✨ Feature "$featureName" generated successfully! ✨\n');
+
   context.logger.info('''
 
 🔍 Need implementation examples?
@@ -21,7 +22,8 @@ void showFeatureHelpMessage(HookContext context, String featureName) {
   • Use Get.toNamed('/${featureName}') for navigation
 
 📚 For more examples and documentation:
-  • Documentation: https://github.com/SHREYANSHSK/cleanforge_bricks
+  • Github Repo: https://github.com/SHREYANSHSK/cleanforge_bricks
+  • Detail Documentation: https://shreyanshsk.github.io/CleanForge-bricks/
   • Example Project: https://github.com/SHREYANSHSK/CleanForge-example
   • Report issues: https://github.com/SHREYANSHSK/cleanforge_bricks/issues
 
