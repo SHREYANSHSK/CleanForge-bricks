@@ -1,6 +1,8 @@
 name: cleanforge_feature
-description: Adds a new feature module to a CleanForge-generated Flutter project, with automatic route addition. Reads project name and state management from .cleanforge/config.json.
-version: 0.1.0+1
+description: Adds a new feature module to a CleanForge-generated Flutter project, with automatic route addition.
+version: 1.0.1+1
+repository: https://github.com/SHREYANSHSK/CleanForge-bricks
+
 environment:
   mason: ^0.1.1
 vars:

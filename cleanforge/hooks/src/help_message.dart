@@ -31,6 +31,7 @@ void showHelpMessage(HookContext context) {
 💡 For more information:
   • Github Repo: https://github.com/SHREYANSHSK/cleanforge_bricks
   • Detail Documentation: https://shreyanshsk.github.io/CleanForge-bricks/
+  • Medium Documentation: https://medium.com/@khandelwal.shreyansh.sk/getting-started-with-cleanforge-bricks-flutter-clean-architecture-made-easy-30aa57e27abb
   • Example Project: https://github.com/SHREYANSHSK/CleanForge-example
   • Report issues: https://github.com/SHREYANSHSK/cleanforge_bricks/issues
 
